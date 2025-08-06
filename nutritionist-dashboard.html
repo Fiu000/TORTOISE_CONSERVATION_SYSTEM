@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutritionist Dashboard - Tortoise Conservation Center</title>
+    <link rel="stylesheet" href="nutritionist-dashboard-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="header-content">
+            <div class="header-left">
+                <div class="logo">
+                    <i class="fas fa-leaf"></i>
+                    <span>Nutritionist Dashboard</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="user-details">
+                        <span class="user-name">Dr. Emily Chen</span>
+                        <span class="user-role">Nutritionist</span>
+                    </div>
+                </div>
+                <button class="logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item active" data-tab="overview">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Overview</span>
+                    </li>
+                    <li class="nav-item" data-tab="feeding-schedules">
+                        <i class="fas fa-clock"></i>
+                        <span>Feeding Schedules</span>
+                    </li>
+                    <li class="nav-item" data-tab="diet-plans">
+                        <i class="fas fa-utensils"></i>
+                        <span>Diet Plans</span>
+                    </li>
+                    <li class="nav-item" data-tab="food-inventory">
+                        <i class="fas fa-warehouse"></i>
+                        <span>Food Inventory</span>
+                    </li>
+                    <li class="nav-item" data-tab="nutrition-logs">
+                        <i class="fas fa-clipboard-list"></i>
+                        <span>Nutrition Logs</span>
+                    </li>
+                    <li class="nav-item" data-tab="health-monitoring">
+                        <i class="fas fa-heartbeat"></i>
+                        <span>Health Monitoring</span>
+                    </li>
+                    <li class="nav-item" data-tab="supplements">
+                        <i class="fas fa-pills"></i>
+                        <span>Supplements</span>
+                    </li>
+                    <li class="nav-item" data-tab="reports">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Nutrition Reports</span>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Overview Tab -->
+            <div class="tab-content active" id="overview">
+                <div class="tab-header">
+                    <h1>Nutrition Program Overview</h1>
+                    <p>Welcome back, Dr. Chen. Here's your nutrition program overview for today.</p>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Today's Feedings</h3>
+                            <p class="stat-number">24</p>
+                            <span class="stat-change positive">+3 completed</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Active Diet Plans</h3>
+                            <p class="stat-number">15</p>
+                            <span class="stat-change neutral">No change</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-warehouse"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Food Inventory</h3>
+                            <p class="stat-number">85%</p>
+                            <span class="stat-change negative">-5% this week</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Health Score</h3>
+                            <p class="stat-number">92%</p>
+                            <span class="stat-change positive">+2% this month</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Section -->
+                <div class="profile-section">
+                    <div class="profile-card">
+                        <h2>Professional Information</h2>
+                        <div class="profile-grid">
+                            <div class="profile-item">
+                                <label>License Number:</label>
+                                <span>NUT-2024-009876</span>
+                            </div>
+                            <div class="profile-item">
+                                <label>Specialization:</label>
+                                <span>Reptile Nutrition & Dietetics</span>
+                            </div>
+                            <div class="profile-item">
+                                <label>Program Status:</label>
+                                <span class="status-badge available">Active</span>
+                            </div>
+                            <div class="profile-item">
+                                <label>Experience:</label>
+                                <span>10 years</span>
+                            </div>
+                        </div>
+                        <button class="update-status-btn">
+                            <i class="fas fa-edit"></i>
+                            Update Status
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feeding Schedules Tab -->
+            <div class="tab-content" id="feeding-schedules">
+                <div class="tab-header">
+                    <h1>Feeding Schedules</h1>
+                    <p>Manage and monitor feeding schedules for all tortoises</p>
+                </div>
+
+                <div class="feeding-schedules-grid">
+                    <div class="schedule-card">
+                        <div class="schedule-header">
+                            <h3>Morning Feeding (6:00 AM)</h3>
+                            <span class="schedule-status completed">Completed</span>
+                        </div>
+                        <div class="schedule-details">
+                            <p><strong>Species:</strong> All Tortoises</p>
+                            <p><strong>Diet Type:</strong> Fresh Vegetables</p>
+                            <p><strong>Portion Size:</strong> 200g per tortoise</p>
+                            <p><strong>Completed By:</strong> John Smith</p>
+                            <p><strong>Notes:</strong> All tortoises ate well</p>
+                        </div>
+                    </div>
+
+                    <div class="schedule-card">
+                        <div class="schedule-header">
+                            <h3>Afternoon Feeding (2:00 PM)</h3>
+                            <span class="schedule-status upcoming">Upcoming</span>
+                        </div>
+                        <div class="schedule-details">
+                            <p><strong>Species:</strong> Galápagos Tortoises</p>
+                            <p><strong>Diet Type:</strong> Protein Supplement</p>
+                            <p><strong>Portion Size:</strong> 50g per tortoise</p>
+                            <p><strong>Assigned To:</strong> Sarah Johnson</p>
+                            <p><strong>Notes:</strong> Special diet for breeding season</p>
+                        </div>
+                    </div>
+
+                    <div class="schedule-card">
+                        <div class="schedule-header">
+                            <h3>Evening Feeding (6:00 PM)</h3>
+                            <span class="schedule-status upcoming">Upcoming</span>
+                        </div>
+                        <div class="schedule-details">
+                            <p><strong>Species:</strong> All Tortoises</p>
+                            <p><strong>Diet Type:</strong> Mixed Greens</p>
+                            <p><strong>Portion Size:</strong> 150g per tortoise</p>
+                            <p><strong>Assigned To:</strong> Mike Davis</p>
+                            <p><strong>Notes:</strong> Regular evening feeding</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Diet Plans Tab -->
+            <div class="tab-content" id="diet-plans">
+                <div class="tab-header">
+                    <h1>Diet Plans</h1>
+                    <p>Manage specialized diet plans for different tortoise species</p>
+                </div>
+
+                <div class="diet-plans-grid">
+                    <div class="diet-plan-card">
+                        <div class="diet-plan-header">
+                            <h3>Galápagos Tortoise Diet</h3>
+                            <span class="diet-status active">Active</span>
+                        </div>
+                        <div class="diet-plan-details">
+                            <h4>Daily Requirements:</h4>
+                            <ul>
+                                <li>Fresh vegetables: 60%</li>
+                                <li>Grasses and hay: 30%</li>
+                                <li>Protein supplement: 10%</li>
+                            </ul>
+                            <h4>Supplements:</h4>
+                            <ul>
+                                <li>Calcium powder: Daily</li>
+                                <li>Vitamin D3: 3x per week</li>
+                                <li>Multivitamin: 2x per week</li>
+                            </ul>
+                        </div>
+                        <div class="diet-plan-actions">
+                            <button class="action-btn primary">
+                                <i class="fas fa-edit"></i>
+                                Edit Plan
+                            </button>
+                            <button class="action-btn secondary">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="diet-plan-card">
+                        <div class="diet-plan-header">
+                            <h3>African Spurred Tortoise Diet</h3>
+                            <span class="diet-status active">Active</span>
+                        </div>
+                        <div class="diet-plan-details">
+                            <h4>Daily Requirements:</h4>
+                            <ul>
+                                <li>Grasses and weeds: 70%</li>
+                                <li>Leafy greens: 20%</li>
+                                <li>Fruits: 10%</li>
+                            </ul>
+                            <h4>Supplements:</h4>
+                            <ul>
+                                <li>Calcium powder: Daily</li>
+                                <li>Vitamin A: Weekly</li>
+                            </ul>
+                        </div>
+                        <div class="diet-plan-actions">
+                            <button class="action-btn primary">
+                                <i class="fas fa-edit"></i>
+                                Edit Plan
+                            </button>
+                            <button class="action-btn secondary">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Food Inventory Tab -->
+            <div class="tab-content" id="food-inventory">
+                <div class="tab-header">
+                    <h1>Food Inventory Management</h1>
+                    <p>Track and manage food supplies and inventory levels</p>
+                </div>
+
+                <div class="inventory-table-controls">
+                    <input type="text" id="inventorySearch" placeholder="Search inventory...">
+                    <button class="table-btn add-btn" id="addInventoryBtn"><i class="fas fa-plus"></i> Add</button>
+                    <button class="table-btn delete-btn" id="deleteSelectedInventoryBtn"><i class="fas fa-trash"></i> Delete</button>
+                </div>
+                <div class="inventory-table">
+                    <table id="inventoryTable">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" id="selectAllInventory"></th>
+                                <th>Food Item</th>
+                                <th>Category</th>
+                                <th>Quantity</th>
+                                <th>Unit</th>
+                                <th>Expiry Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="checkbox" class="row-select"></td>
+                                <td>Fresh Kale</td>
+                                <td>Vegetables</td>
+                                <td>25</td>
+                                <td>kg</td>
+                                <td>2024-02-15</td>
+                                <td><span class="status-badge good">Good</span></td>
+                                <td>
+                                    <button class="table-btn delete-row-btn"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="row-select"></td>
+                                <td>Timothy Hay</td>
+                                <td>Grasses</td>
+                                <td>100</td>
+                                <td>kg</td>
+                                <td>2024-06-30</td>
+                                <td><span class="status-badge good">Good</span></td>
+                                <td>
+                                    <button class="table-btn delete-row-btn"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="row-select"></td>
+                                <td>Calcium Powder</td>
+                                <td>Supplements</td>
+                                <td>5</td>
+                                <td>kg</td>
+                                <td>2024-12-31</td>
+                                <td><span class="status-badge low">Low</span></td>
+                                <td>
+                                    <button class="table-btn delete-row-btn"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Nutrition Logs Tab -->
+            <div class="tab-content" id="nutrition-logs">
+                <div class="tab-header">
+                    <h1>Nutrition Logs</h1>
+                    <p>Track feeding activities and nutrition observations</p>
+                </div>
+
+                <div class="nutrition-logs-grid">
+                    <div class="log-card">
+                        <div class="log-header">
+                            <h3>Shelly (#T001)</h3>
+                            <span class="log-date">2024-01-30</span>
+                        </div>
+                        <div class="log-details">
+                            <p><strong>Meal Type:</strong> Morning Feeding</p>
+                            <p><strong>Food Consumed:</strong> Kale, Carrots, Timothy Hay</p>
+                            <p><strong>Amount:</strong> 180g</p>
+                            <p><strong>Appetite:</strong> <span class="status-badge excellent">Excellent</span></p>
+                            <p><strong>Notes:</strong> Ate all food quickly, good energy levels</p>
+                        </div>
+                    </div>
+
+                    <div class="log-card">
+                        <div class="log-header">
+                            <h3>Rocky (#T002)</h3>
+                            <span class="log-date">2024-01-30</span>
+                        </div>
+                        <div class="log-details">
+                            <p><strong>Meal Type:</strong> Morning Feeding</p>
+                            <p><strong>Food Consumed:</strong> Mixed Greens, Protein Supplement</p>
+                            <p><strong>Amount:</strong> 150g</p>
+                            <p><strong>Appetite:</strong> <span class="status-badge good">Good</span></p>
+                            <p><strong>Notes:</strong> Slightly slower eating, monitoring</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Health Monitoring Tab -->
+            <div class="tab-content" id="health-monitoring">
+                <div class="tab-header">
+                    <h1>Health Monitoring</h1>
+                    <p>Monitor health indicators related to nutrition</p>
+                </div>
+
+                <div class="health-monitoring-grid">
+                    <div class="health-card">
+                        <div class="health-header">
+                            <h3>Weight Monitoring</h3>
+                            <span class="health-status positive">Positive Trend</span>
+                        </div>
+                        <div class="health-details">
+                            <p><strong>Average Weight Gain:</strong> +2.5kg this month</p>
+                            <p><strong>Healthy Range:</strong> 85-95% of target weight</p>
+                            <p><strong>Current Status:</strong> All tortoises within range</p>
+                        </div>
+                    </div>
+
+                    <div class="health-card">
+                        <div class="health-header">
+                            <h3>Shell Health</h3>
+                            <span class="health-status positive">Excellent</span>
+                        </div>
+                        <div class="health-details">
+                            <p><strong>Calcium Levels:</strong> Optimal</p>
+                            <p><strong>Shell Growth:</strong> Normal</p>
+                            <p><strong>Issues:</strong> None reported</p>
+                        </div>
+                    </div>
+
+                    <div class="health-card">
+                        <div class="health-header">
+                            <h3>Digestive Health</h3>
+                            <span class="health-status monitoring">Monitoring</span>
+                        </div>
+                        <div class="health-details">
+                            <p><strong>Digestion Rate:</strong> Normal</p>
+                            <p><strong>Fecal Quality:</strong> Good</p>
+                            <p><strong>Issues:</strong> 2 cases of mild constipation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Supplements Tab -->
+            <div class="tab-content" id="supplements">
+                <div class="tab-header">
+                    <h1>Supplement Management</h1>
+                    <p>Track and manage vitamin and mineral supplements</p>
+                </div>
+
+                <div class="supplements-grid">
+                    <div class="supplement-card">
+                        <div class="supplement-header">
+                            <h3>Calcium Powder</h3>
+                            <span class="supplement-status active">Active</span>
+                        </div>
+                        <div class="supplement-details">
+                            <p><strong>Dosage:</strong> 1g per feeding</p>
+                            <p><strong>Frequency:</strong> Daily</p>
+                            <p><strong>Target Species:</strong> All tortoises</p>
+                            <p><strong>Inventory:</strong> 5kg remaining</p>
+                        </div>
+                        <div class="supplement-actions">
+                            <button class="action-btn primary">
+                                <i class="fas fa-edit"></i>
+                                Adjust Dosage
+                            </button>
+                            <button class="action-btn secondary">
+                                <i class="fas fa-chart-line"></i>
+                                View History
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="supplement-card">
+                        <div class="supplement-header">
+                            <h3>Vitamin D3</h3>
+                            <span class="supplement-status active">Active</span>
+                        </div>
+                        <div class="supplement-details">
+                            <p><strong>Dosage:</strong> 500 IU per dose</p>
+                            <p><strong>Frequency:</strong> 3x per week</p>
+                            <p><strong>Target Species:</strong> Indoor tortoises</p>
+                            <p><strong>Inventory:</strong> 2kg remaining</p>
+                        </div>
+                        <div class="supplement-actions">
+                            <button class="action-btn primary">
+                                <i class="fas fa-edit"></i>
+                                Adjust Dosage
+                            </button>
+                            <button class="action-btn secondary">
+                                <i class="fas fa-chart-line"></i>
+                                View History
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nutrition Reports Tab -->
+            <div class="tab-content" id="reports">
+                <div class="tab-header">
+                    <h1>Nutrition Reports</h1>
+                    <p>View and generate nutrition program reports</p>
+                </div>
+
+                <div class="reports-grid">
+                    <div class="report-card">
+                        <div class="report-header">
+                            <h3>Monthly Nutrition Summary</h3>
+                            <span class="report-date">January 2024</span>
+                        </div>
+                        <div class="report-summary">
+                            <p><strong>Total Feedings:</strong> 720</p>
+                            <p><strong>Food Consumed:</strong> 1,200kg</p>
+                            <p><strong>Health Score:</strong> 92%</p>
+                            <p><strong>Issues:</strong> 3 minor cases</p>
+                        </div>
+                        <button class="view-report-btn">View Full Report</button>
+                    </div>
+
+                    <div class="report-card">
+                        <div class="report-header">
+                            <h3>Diet Effectiveness Report</h3>
+                            <span class="report-date">Q4 2023</span>
+                        </div>
+                        <div class="report-summary">
+                            <p><strong>Weight Gain:</strong> +15% average</p>
+                            <p><strong>Shell Health:</strong> 98% optimal</p>
+                            <p><strong>Digestive Health:</strong> 95% normal</p>
+                            <p><strong>Overall Success:</strong> 94%</p>
+                        </div>
+                        <button class="view-report-btn">View Full Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Logout Confirmation Modal -->
+    <div class="modal" id="logoutModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Confirm Logout</h3>
+                <button class="modal-close" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to logout from the Nutritionist Dashboard?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn secondary" id="cancelLogout">Cancel</button>
+                <button class="modal-btn primary" id="confirmLogout">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="nutritionist-dashboard-script.js"></script>
+</body>
+</html> 

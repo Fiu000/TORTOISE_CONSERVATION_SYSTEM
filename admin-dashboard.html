@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Tortoise Conservation Center</title>
+    <link rel="stylesheet" href="admin-dashboard-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="admin-sidebar">
+        <div class="sidebar-logo">
+            <i class="fas fa-shield-alt"></i>
+            <span>Admin</span>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li class="sidebar-item active" data-dashboard="caretaker"><i class="fas fa-turtle"></i> Tortoise Caretaker</li>
+                <li class="sidebar-item" data-dashboard="maintenance"><i class="fas fa-tools"></i> Maintenance Staff</li>
+                <li class="sidebar-item" data-dashboard="breeding"><i class="fas fa-egg"></i> Breeding Manager</li>
+                <li class="sidebar-item" data-dashboard="nutrition"><i class="fas fa-apple-alt"></i> Nutritionist</li>
+                <li class="sidebar-item" data-dashboard="veterinarian"><i class="fas fa-user-md"></i> Veterinarian</li>
+                <li class="sidebar-item" data-dashboard="iot"><i class="fas fa-thermometer-half"></i> IOT Staff</li>
+                <li class="sidebar-item" data-dashboard="task"><i class="fas fa-tasks"></i> Task Manager</li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <!-- Dashboard Header -->
+        <header class="admin-header">
+            <div class="header-left">
+                <h1>Admin Dashboard</h1>
+                <div class="current-datetime" id="currentDatetime"></div>
+            </div>
+            <div class="header-right">
+                <div class="admin-profile">
+                    <div class="profile-avatar"><i class="fas fa-user-shield"></i></div>
+                    <div class="profile-info">
+                        <span class="profile-name">System Administrator</span>
+                        <span class="profile-role">Administrator</span>
+                    </div>
+                </div>
+                <button class="logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Dashboard Content Area -->
+        <section class="dashboard-content-area">
+            <!-- Tortoise Caretaker Dashboard Table -->
+            <div class="dashboard-table active" id="dashboard-caretaker">
+                <div class="dashboard-chart-container"><canvas id="chart-caretaker"></canvas></div>
+                <div class="dashboard-table-header">
+                    <h2><i class="fas fa-turtle"></i> Tortoise Caretaker Dashboard</h2>
+                    <div class="table-actions">
+                        <input type="text" class="table-search" placeholder="Search...">
+                        <button class="table-btn add-btn"><i class="fas fa-plus"></i> Add</button>
+                        <button class="table-btn delete-btn"><i class="fas fa-trash"></i> Delete</button>
+                    </div>
+                </div>
+                <div class="dashboard-table-wrapper">
+                    <table class="dashboard-table-main">
+                        <thead>
+                            <tr>
+                                <th>Tortoise ID</th>
+                                <th>Species</th>
+                                <th>Age</th>
+                                <th>Gender</th>
+                                <th>Health Status</th>
+                                <th>History of Care</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>T001</td>
+                                <td>Galapagos</td>
+                                <td>45</td>
+                                <td>Male</td>
+                                <td>Healthy</td>
+                                <td>Routine checkups, no major issues</td>
+                            </tr>
+                            <tr>
+                                <td>T002</td>
+                                <td>Aldabra</td>
+                                <td>38</td>
+                                <td>Female</td>
+                                <td>Monitoring</td>
+                                <td>Weight loss observed, under monitoring</td>
+                            </tr>
+                            <tr>
+                                <td>T003</td>
+                                <td>Sulcata</td>
+                                <td>25</td>
+                                <td>Male</td>
+                                <td>Healthy</td>
+                                <td>Vaccinated, regular feeding</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Maintenance Staff Dashboard Table -->
+            <div class="dashboard-table" id="dashboard-maintenance">
+                <div class="dashboard-chart-container"><canvas id="chart-maintenance"></canvas></div>
+                <div class="dashboard-table-header">
+                    <h2><i class="fas fa-tools"></i> Maintenance Staff Dashboard</h2>
+                    <div class="table-actions">
+                        <input type="text" class="table-search" placeholder="Search...">
+                        <button class="table-btn add-btn"><i class="fas fa-plus"></i> Add</button>
+                        <button class="table-btn delete-btn"><i class="fas fa-trash"></i> Delete</button>
+                    </div>
+                </div>
+                <div class="dashboard-table-wrapper">
+                    <table class="dashboard-table-main">
+                        <thead>
+                            <tr>
+                                <th>Enclosure ID</th>
+                                <th>Size (sq ft)</th>
+                                <th>Habitat Type</th>
+                                <th>Current Occupants</th>
+                                <th>Last Maintenance Date</th>
+                                <th>Next Scheduled Maintenance</th>
+                                <th>Temperature</th>
+                                <th>Humidity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>E001</td>
+                                <td>500</td>
+                                <td>Galapagos Habitat</td>
+                                <td>8</td>
+                                <td>2024-03-01</td>
+                                <td>2024-04-01</td>
+                                <td>25°C</td>
+                                <td>65%</td>
+                            </tr>
+                            <tr>
+                                <td>E002</td>
+                                <td>400</td>
+                                <td>Aldabra Habitat</td>
+                                <td>6</td>
+                                <td>2024-03-10</td>
+                                <td>2024-04-10</td>
+                                <td>28°C</td>
+                                <td>70%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Breeding Manager Dashboard Table -->
+            <div class="dashboard-table" id="dashboard-breeding">
+                <div class="dashboard-chart-container"><canvas id="chart-breeding"></canvas></div>
+                <div class="dashboard-table-header">
+                    <h2><i class="fas fa-egg"></i> Breeding Manager Dashboard</h2>
+                    <div class="table-actions">
+                        <input type="text" class="table-search" placeholder="Search...">
+                        <button class="table-btn add-btn"><i class="fas fa-plus"></i> Add</button>
+                        <button class="table-btn delete-btn"><i class="fas fa-trash"></i> Delete</button>
+                    </div>
+                </div>
+                <div class="dashboard-table-wrapper">
+                    <table class="dashboard-table-main">
+                        <thead>
+                            <tr>
+                                <th>Breeding Pair ID</th>
+                                <th>Male ID</th>
+                                <th>Female ID</th>
+                                <th>Nesting Date</th>
+                                <th>Egg Count</th>
+                                <th>Incubation Start</th>
+                                <th>Incubation End</th>
+                                <th>Hatching Success (%)</th>
+                                <th>Observations</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>BP001</td>
+                                <td>T001</td>
+                                <td>T002</td>
+                                <td>2024-03-15</td>
+                                <td>12</td>
+                                <td>2024-03-16</td>
+                                <td>2024-07-14</td>
+                                <td>80%</td>
+                                <td>Healthy eggs, good pairing</td>
+                            </tr>
+                            <tr>
+                                <td>BP002</td>
+                                <td>T003</td>
+                                <td>T004</td>
+                                <td>2024-03-20</td>
+                                <td>8</td>
+                                <td>2024-03-21</td>
+                                <td>2024-07-09</td>
+                                <td>75%</td>
+                                <td>Monitoring incubation closely</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Nutritionist Dashboard Table -->
+            <div class="dashboard-table" id="dashboard-nutrition">
+                <div class="dashboard-chart-container"><canvas id="chart-nutrition"></canvas></div>
+                <div class="dashboard-table-header">
+                    <h2><i class="fas fa-apple-alt"></i> Nutritionist Dashboard</h2>
+                    <div class="table-actions">
+                        <input type="text" class="table-search" placeholder="Search...">
+                        <button class="table-btn add-btn"><i class="fas fa-plus"></i> Add</button>
+                        <button class="table-btn delete-btn"><i class="fas fa-trash"></i> Delete</button>
+                    </div>
+                </div>
+                <div class="dashboard-table-wrapper">
+                    <table class="dashboard-table-main">
+                        <thead>
+                            <tr>
+                                <th>Tortoise ID</th>
+                                <th>Species</th>
+                                <th>Diet Type</th>
+                                <th>Feeding Time</th>
+                                <th>Food Given</th>
+                                <th>Special Requirements</th>
+                                <th>Food Inventory Left</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>T001</td>
+                                <td>Galapagos</td>
+                                <td>Herbivore</td>
+                                <td>08:00 AM</td>
+                                <td>Grasses, Fruits</td>
+                                <td>None</td>
+                                <td>85%</td>
+                            </tr>
+                            <tr>
+                                <td>T002</td>
+                                <td>Aldabra</td>
+                                <td>Herbivore</td>
+                                <td>02:00 PM</td>
+                                <td>Leaves, Flowers</td>
+                                <td>Calcium supplement</td>
+                                <td>70%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Veterinarian Dashboard Table -->
+            <div class="dashboard-table" id="dashboard-veterinarian">
+                <div class="dashboard-chart-container"><canvas id="chart-veterinarian"></canvas></div>
+                <div class="dashboard-table-header">
+                    <h2><i class="fas fa-user-md"></i> Veterinarian Dashboard</h2>
+                    <div class="table-actions">
+                        <input type="text" class="table-search" placeholder="Search...">
+                        <button class="table-btn add-btn"><i class="fas fa-plus"></i> Add</button>
+                        <button class="table-btn delete-btn"><i class="fas fa-trash"></i> Delete</button>
+                    </div>
+                </div>
+                <div class="dashboard-table-wrapper">
+                    <table class="dashboard-table-main">
+                        <thead>
+                            <tr>
+                                <th>Tortoise ID</th>
+                                <th>Check-up Date</th>
+                                <th>Health Status</th>
+                                <th>Treatment Given</th>
+                                <th>Vaccination Status</th>
+                                <th>Illness/Injury Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>T001</td>
+                                <td>2024-03-20</td>
+                                <td>Healthy</td>
+                                <td>Routine checkup</td>
+                                <td>Up to date</td>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <td>T002</td>
+                                <td>2024-03-18</td>
+                                <td>Monitoring</td>
+                                <td>Weight monitoring</td>
+                                <td>Due next month</td>
+                                <td>Weight loss observed</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- IOT Staff Dashboard Table -->
+            <div class="dashboard-table" id="dashboard-iot">
+                <div class="dashboard-chart-container"><canvas id="chart-iot"></canvas></div>
+                <div class="dashboard-table-header">
+                    <h2><i class="fas fa-thermometer-half"></i> IOT Staff Dashboard</h2>
+                    <div class="table-actions">
+                        <input type="text" class="table-search" placeholder="Search...">
+                        <button class="table-btn add-btn"><i class="fas fa-plus"></i> Add</button>
+                        <button class="table-btn delete-btn"><i class="fas fa-trash"></i> Delete</button>
+                    </div>
+                </div>
+                <div class="dashboard-table-wrapper">
+                    <table class="dashboard-table-main">
+                        <thead>
+                            <tr>
+                                <th>Sensor ID</th>
+                                <th>Location Type</th>
+                                <th>Location ID</th>
+                                <th>Temperature (°C)</th>
+                                <th>Humidity (%)</th>
+                                <th>Water Quality (pH)</th>
+                                <th>Last Updated</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>S001</td>
+                                <td>Enclosure</td>
+                                <td>E001</td>
+                                <td>25</td>
+                                <td>65</td>
+                                <td>7.2</td>
+                                <td>2024-03-21 09:00</td>
+                            </tr>
+                            <tr>
+                                <td>S002</td>
+                                <td>Incubator</td>
+                                <td>I001</td>
+                                <td>29</td>
+                                <td>80</td>
+                                <td>7.0</td>
+                                <td>2024-03-21 08:45</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Task Manager Dashboard Table -->
+            <div class="dashboard-table" id="dashboard-task">
+                <div class="dashboard-chart-container"><canvas id="chart-task"></canvas></div>
+                <div class="dashboard-table-header">
+                    <h2><i class="fas fa-tasks"></i> Task Manager Dashboard</h2>
+                    <div class="table-actions">
+                        <input type="text" class="table-search" placeholder="Search...">
+                        <button class="table-btn add-btn"><i class="fas fa-plus"></i> Add</button>
+                        <button class="table-btn delete-btn"><i class="fas fa-trash"></i> Delete</button>
+                    </div>
+                </div>
+                <div class="dashboard-table-wrapper">
+                    <table class="dashboard-table-main">
+                        <thead>
+                            <tr>
+                                <th>Task ID</th>
+                                <th>Task Type</th>
+                                <th>Assigned To</th>
+                                <th>Date Assigned</th>
+                                <th>Due Time</th>
+                                <th>Completion Status</th>
+                                <th>Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>TK001</td>
+                                <td>Feeding</td>
+                                <td>Sarah Wilson</td>
+                                <td>2024-03-20</td>
+                                <td>08:00 AM</td>
+                                <td>Completed</td>
+                                <td>All tortoises fed</td>
+                            </tr>
+                            <tr>
+                                <td>TK002</td>
+                                <td>Medical Check-up</td>
+                                <td>Dr. Johnson</td>
+                                <td>2024-03-21</td>
+                                <td>10:00 AM</td>
+                                <td>In Progress</td>
+                                <td>Atlas under observation</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Add Modal (Reusable) -->
+    <div class="modal" id="addModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="addModalTitle">Add New Entry</h3>
+                <button class="modal-close" id="closeAddModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="addForm">
+                <div class="modal-body" id="addFormFields">
+                    <!-- Dynamic form fields go here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="modal-btn secondary" id="cancelAdd">Cancel</button>
+                    <button type="submit" class="modal-btn primary">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Logout Confirmation Modal -->
+    <div class="modal" id="logoutModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Confirm Logout</h3>
+                <button class="modal-close" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to logout from the Admin Dashboard?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn secondary" id="cancelLogout">Cancel</button>
+                <button class="modal-btn primary" id="confirmLogout">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin-dashboard-script.js"></script>
+</body>
+</html> 

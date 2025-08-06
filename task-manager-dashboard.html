@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager Dashboard - Tortoise Conservation Center</title>
+    <link rel="stylesheet" href="task-manager-dashboard-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="header-content">
+            <div class="header-left">
+                <div class="logo">
+                    <i class="fas fa-tasks"></i>
+                    <span>Task Manager Dashboard</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <div class="user-details">
+                        <span class="user-name">Sarah Williams</span>
+                        <span class="user-role">Task Manager</span>
+                    </div>
+                </div>
+                <button class="logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item active" data-tab="overview">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Overview</span>
+                    </li>
+                    <li class="nav-item" data-tab="task-assignment">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Task Assignment</span>
+                    </li>
+                    <li class="nav-item" data-tab="staff-management">
+                        <i class="fas fa-users"></i>
+                        <span>Staff Management</span>
+                    </li>
+                    <li class="nav-item" data-tab="task-tracking">
+                        <i class="fas fa-clipboard-check"></i>
+                        <span>Task Tracking</span>
+                    </li>
+                    <li class="nav-item" data-tab="schedules">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Work Schedules</span>
+                    </li>
+                    <li class="nav-item" data-tab="performance">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Performance Metrics</span>
+                    </li>
+                    <li class="nav-item" data-tab="communication">
+                        <i class="fas fa-comments"></i>
+                        <span>Communication</span>
+                    </li>
+                    <li class="nav-item" data-tab="reports">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Task Reports</span>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Overview Tab -->
+            <div class="tab-content active" id="overview">
+                <div class="tab-header">
+                    <h1>Task Management Overview</h1>
+                    <p>Welcome back, Sarah. Here's your task management overview for today.</p>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Active Tasks</h3>
+                            <p class="stat-number">45</p>
+                            <span class="stat-change positive">+5 new today</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Staff Available</h3>
+                            <p class="stat-number">12</p>
+                            <span class="stat-change neutral">All present</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Completed Today</h3>
+                            <p class="stat-number">28</p>
+                            <span class="stat-change positive">+8 this morning</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>On Time Rate</h3>
+                            <p class="stat-number">94%</p>
+                            <span class="stat-change positive">+2% this week</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Section -->
+                <div class="profile-section">
+                    <div class="profile-card">
+                        <h2>Professional Information</h2>
+                        <div class="profile-grid">
+                            <div class="profile-item">
+                                <label>Employee ID:</label>
+                                <span>TASK-2024-007654</span>
+                            </div>
+                            <div class="profile-item">
+                                <label>Department:</label>
+                                <span>Operations Management</span>
+                            </div>
+                            <div class="profile-item">
+                                <label>Work Status:</label>
+                                <span class="status-badge available">Active</span>
+                            </div>
+                            <div class="profile-item">
+                                <label>Experience:</label>
+                                <span>6 years</span>
+                            </div>
+                        </div>
+                        <button class="update-status-btn">
+                            <i class="fas fa-edit"></i>
+                            Update Status
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Task Assignment Tab -->
+            <div class="tab-content" id="task-assignment">
+                <div class="tab-header">
+                    <h1>Task Assignment</h1>
+                    <p>Assign and manage tasks for staff members</p>
+                </div>
+
+                <div class="task-assignment-controls">
+                    <button class="table-btn add-btn" id="addTaskBtn"><i class="fas fa-plus"></i> Create New Task</button>
+                    <button class="table-btn secondary" id="bulkAssignBtn"><i class="fas fa-users"></i> Bulk Assign</button>
+                </div>
+
+                <div class="task-assignment-grid">
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Morning Feeding Round</h3>
+                            <span class="task-priority high">High Priority</span>
+                        </div>
+                        <div class="task-details">
+                            <p><strong>Description:</strong> Complete morning feeding for all tortoises</p>
+                            <p><strong>Duration:</strong> 2 hours</p>
+                            <p><strong>Required Skills:</strong> Animal care, feeding knowledge</p>
+                            <p><strong>Deadline:</strong> 9:00 AM</p>
+                        </div>
+                        <div class="task-assignment">
+                            <label>Assign to:</label>
+                            <select class="staff-select">
+                                <option value="">Select Staff Member</option>
+                                <option value="john">John Smith</option>
+                                <option value="sarah">Sarah Johnson</option>
+                                <option value="mike">Mike Davis</option>
+                            </select>
+                            <button class="assign-btn">Assign Task</button>
+                        </div>
+                    </div>
+
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Enclosure Cleaning</h3>
+                            <span class="task-priority medium">Medium Priority</span>
+                        </div>
+                        <div class="task-details">
+                            <p><strong>Description:</strong> Clean and sanitize enclosure areas</p>
+                            <p><strong>Duration:</strong> 3 hours</p>
+                            <p><strong>Required Skills:</strong> Cleaning, safety protocols</p>
+                            <p><strong>Deadline:</strong> 2:00 PM</p>
+                        </div>
+                        <div class="task-assignment">
+                            <label>Assign to:</label>
+                            <select class="staff-select">
+                                <option value="">Select Staff Member</option>
+                                <option value="john">John Smith</option>
+                                <option value="sarah">Sarah Johnson</option>
+                                <option value="mike">Mike Davis</option>
+                            </select>
+                            <button class="assign-btn">Assign Task</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Staff Management Tab -->
+            <div class="tab-content" id="staff-management">
+                <div class="tab-header">
+                    <h1>Staff Management</h1>
+                    <p>Manage staff information and availability</p>
+                </div>
+
+                <div class="staff-grid">
+                    <div class="staff-card">
+                        <div class="staff-header">
+                            <h3>John Smith</h3>
+                            <span class="staff-status available">Available</span>
+                        </div>
+                        <div class="staff-details">
+                            <p><strong>Role:</strong> Animal Care Specialist</p>
+                            <p><strong>Skills:</strong> Feeding, Cleaning, Health Monitoring</p>
+                            <p><strong>Current Tasks:</strong> 3 active</p>
+                            <p><strong>Performance:</strong> <span class="performance-score excellent">95%</span></p>
+                            <p><strong>Work Hours:</strong> 8:00 AM - 4:00 PM</p>
+                        </div>
+                        <div class="staff-actions">
+                            <button class="action-btn primary">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </button>
+                            <button class="action-btn secondary">
+                                <i class="fas fa-edit"></i>
+                                Edit Profile
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="staff-card">
+                        <div class="staff-header">
+                            <h3>Sarah Johnson</h3>
+                            <span class="staff-status busy">Busy</span>
+                        </div>
+                        <div class="staff-details">
+                            <p><strong>Role:</strong> Veterinary Assistant</p>
+                            <p><strong>Skills:</strong> Medical Procedures, Health Assessment</p>
+                            <p><strong>Current Tasks:</strong> 5 active</p>
+                            <p><strong>Performance:</strong> <span class="performance-score good">88%</span></p>
+                            <p><strong>Work Hours:</strong> 9:00 AM - 5:00 PM</p>
+                        </div>
+                        <div class="staff-actions">
+                            <button class="action-btn primary">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </button>
+                            <button class="action-btn secondary">
+                                <i class="fas fa-edit"></i>
+                                Edit Profile
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="staff-card">
+                        <div class="staff-header">
+                            <h3>Mike Davis</h3>
+                            <span class="staff-status available">Available</span>
+                        </div>
+                        <div class="staff-details">
+                            <p><strong>Role:</strong> Maintenance Staff</p>
+                            <p><strong>Skills:</strong> Equipment Repair, Facility Maintenance</p>
+                            <p><strong>Current Tasks:</strong> 2 active</p>
+                            <p><strong>Performance:</strong> <span class="performance-score excellent">92%</span></p>
+                            <p><strong>Work Hours:</strong> 7:00 AM - 3:00 PM</p>
+                        </div>
+                        <div class="staff-actions">
+                            <button class="action-btn primary">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </button>
+                            <button class="action-btn secondary">
+                                <i class="fas fa-edit"></i>
+                                Edit Profile
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Task Tracking Tab -->
+            <div class="tab-content" id="task-tracking">
+                <div class="tab-header">
+                    <h1>Task Tracking</h1>
+                    <p>Track progress and completion of assigned tasks</p>
+                </div>
+
+                <div class="task-tracking-controls">
+                    <input type="text" id="taskTrackingSearch" placeholder="Search tasks...">
+                    <select id="statusFilter">
+                        <option value="">All Status</option>
+                        <option value="pending">Pending</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="completed">Completed</option>
+                        <option value="overdue">Overdue</option>
+                    </select>
+                </div>
+
+                <div class="task-tracking-table">
+                    <table id="taskTrackingTable">
+                        <thead>
+                            <tr>
+                                <th>Task ID</th>
+                                <th>Task Name</th>
+                                <th>Assigned To</th>
+                                <th>Priority</th>
+                                <th>Status</th>
+                                <th>Progress</th>
+                                <th>Deadline</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#TASK001</td>
+                                <td>Morning Feeding Round</td>
+                                <td>John Smith</td>
+                                <td><span class="priority high">High</span></td>
+                                <td><span class="status-badge completed">Completed</span></td>
+                                <td><div class="progress-bar"><div class="progress-fill" style="width: 100%"></div></div></td>
+                                <td>9:00 AM</td>
+                                <td>
+                                    <button class="table-btn view-btn"><i class="fas fa-eye"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#TASK002</td>
+                                <td>Enclosure Cleaning</td>
+                                <td>Mike Davis</td>
+                                <td><span class="priority medium">Medium</span></td>
+                                <td><span class="status-badge in-progress">In Progress</span></td>
+                                <td><div class="progress-bar"><div class="progress-fill" style="width: 65%"></div></div></td>
+                                <td>2:00 PM</td>
+                                <td>
+                                    <button class="table-btn view-btn"><i class="fas fa-eye"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#TASK003</td>
+                                <td>Health Check Round</td>
+                                <td>Sarah Johnson</td>
+                                <td><span class="priority high">High</span></td>
+                                <td><span class="status-badge pending">Pending</span></td>
+                                <td><div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div></td>
+                                <td>11:00 AM</td>
+                                <td>
+                                    <button class="table-btn view-btn"><i class="fas fa-eye"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Work Schedules Tab -->
+            <div class="tab-content" id="schedules">
+                <div class="tab-header">
+                    <h1>Work Schedules</h1>
+                    <p>Manage and view staff work schedules</p>
+                </div>
+
+                <div class="schedule-grid">
+                    <div class="schedule-card">
+                        <div class="schedule-header">
+                            <h3>Today's Schedule</h3>
+                            <span class="schedule-date">January 30, 2024</span>
+                        </div>
+                        <div class="schedule-timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-time">6:00 AM</div>
+                                <div class="timeline-content">
+                                    <h4>Morning Briefing</h4>
+                                    <p>All staff meeting to discuss daily tasks</p>
+                                    <span class="timeline-status completed">Completed</span>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-time">8:00 AM</div>
+                                <div class="timeline-content">
+                                    <h4>Feeding Rounds</h4>
+                                    <p>John Smith - Galápagos enclosure</p>
+                                    <span class="timeline-status completed">Completed</span>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-time">10:00 AM</div>
+                                <div class="timeline-content">
+                                    <h4>Health Checks</h4>
+                                    <p>Sarah Johnson - Medical assessments</p>
+                                    <span class="timeline-status ongoing">In Progress</span>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-time">2:00 PM</div>
+                                <div class="timeline-content">
+                                    <h4>Maintenance Tasks</h4>
+                                    <p>Mike Davis - Equipment servicing</p>
+                                    <span class="timeline-status upcoming">Upcoming</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Performance Metrics Tab -->
+            <div class="tab-content" id="performance">
+                <div class="tab-header">
+                    <h1>Performance Metrics</h1>
+                    <p>Track staff performance and productivity</p>
+                </div>
+
+                <div class="performance-grid">
+                    <div class="performance-card">
+                        <div class="performance-header">
+                            <h3>Task Completion Rate</h3>
+                            <span class="performance-score excellent">94%</span>
+                        </div>
+                        <div class="performance-details">
+                            <p><strong>This Week:</strong> 156/165 tasks completed</p>
+                            <p><strong>Last Week:</strong> 89% completion rate</p>
+                            <p><strong>Trend:</strong> <span class="trend positive">+5% improvement</span></p>
+                        </div>
+                    </div>
+
+                    <div class="performance-card">
+                        <div class="performance-header">
+                            <h3>On-Time Performance</h3>
+                            <span class="performance-score good">88%</span>
+                        </div>
+                        <div class="performance-details">
+                            <p><strong>This Week:</strong> 145/165 tasks on time</p>
+                            <p><strong>Last Week:</strong> 85% on-time rate</p>
+                            <p><strong>Trend:</strong> <span class="trend positive">+3% improvement</span></p>
+                        </div>
+                    </div>
+
+                    <div class="performance-card">
+                        <div class="performance-header">
+                            <h3>Staff Productivity</h3>
+                            <span class="performance-score excellent">91%</span>
+                        </div>
+                        <div class="performance-details">
+                            <p><strong>Average Tasks/Day:</strong> 8.5 per staff member</p>
+                            <p><strong>Quality Score:</strong> 4.2/5.0</p>
+                            <p><strong>Trend:</strong> <span class="trend positive">+2% improvement</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Communication Tab -->
+            <div class="tab-content" id="communication">
+                <div class="tab-header">
+                    <h1>Communication Center</h1>
+                    <p>Manage team communications and announcements</p>
+                </div>
+
+                <div class="communication-grid">
+                    <div class="announcement-card">
+                        <div class="announcement-header">
+                            <h3>Important Update</h3>
+                            <span class="announcement-date">2 hours ago</span>
+                        </div>
+                        <div class="announcement-content">
+                            <p><strong>Subject:</strong> New feeding protocol implementation</p>
+                            <p><strong>Message:</strong> Starting tomorrow, we will implement the new feeding protocol for Galápagos tortoises. All staff should review the updated guidelines.</p>
+                            <p><strong>Priority:</strong> <span class="priority high">High</span></p>
+                        </div>
+                        <div class="announcement-actions">
+                            <button class="action-btn primary">Mark as Read</button>
+                            <button class="action-btn secondary">View Details</button>
+                        </div>
+                    </div>
+
+                    <div class="announcement-card">
+                        <div class="announcement-header">
+                            <h3>Weekly Meeting Reminder</h3>
+                            <span class="announcement-date">1 day ago</span>
+                        </div>
+                        <div class="announcement-content">
+                            <p><strong>Subject:</strong> Staff meeting schedule</p>
+                            <p><strong>Message:</strong> Weekly staff meeting will be held on Friday at 3:00 PM. Please prepare your weekly reports.</p>
+                            <p><strong>Priority:</strong> <span class="priority medium">Medium</span></p>
+                        </div>
+                        <div class="announcement-actions">
+                            <button class="action-btn primary">Mark as Read</button>
+                            <button class="action-btn secondary">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Task Reports Tab -->
+            <div class="tab-content" id="reports">
+                <div class="tab-header">
+                    <h1>Task Reports</h1>
+                    <p>Generate and view task management reports</p>
+                </div>
+
+                <div class="reports-grid">
+                    <div class="report-card">
+                        <div class="report-header">
+                            <h3>Daily Task Summary</h3>
+                            <span class="report-date">January 30, 2024</span>
+                        </div>
+                        <div class="report-summary">
+                            <p><strong>Total Tasks:</strong> 45</p>
+                            <p><strong>Completed:</strong> 28</p>
+                            <p><strong>In Progress:</strong> 12</p>
+                            <p><strong>Pending:</strong> 5</p>
+                            <p><strong>Completion Rate:</strong> 62%</p>
+                        </div>
+                        <button class="view-report-btn">View Full Report</button>
+                    </div>
+
+                    <div class="report-card">
+                        <div class="report-header">
+                            <h3>Weekly Performance Report</h3>
+                            <span class="report-date">Week 5, January 2024</span>
+                        </div>
+                        <div class="report-summary">
+                            <p><strong>Tasks Completed:</strong> 165</p>
+                            <p><strong>On-Time Rate:</strong> 88%</p>
+                            <p><strong>Staff Productivity:</strong> 91%</p>
+                            <p><strong>Quality Score:</strong> 4.2/5.0</p>
+                        </div>
+                        <button class="view-report-btn">View Full Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Logout Confirmation Modal -->
+    <div class="modal" id="logoutModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Confirm Logout</h3>
+                <button class="modal-close" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to logout from the Task Manager Dashboard?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn secondary" id="cancelLogout">Cancel</button>
+                <button class="modal-btn primary" id="confirmLogout">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="task-manager-dashboard-script.js"></script>
+</body>
+</html> 
