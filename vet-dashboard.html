@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veterinarian Dashboard - Tortoise Conservation Center</title>
+    <link rel="stylesheet" href="vet-dashboard-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="header-content">
+            <div class="header-left">
+                <div class="logo">
+                    <i class="fas fa-stethoscope"></i>
+                    <span>Veterinarian Dashboard</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <div class="user-details">
+                        <span class="user-name">Dr. Sarah Johnson</span>
+                        <span class="user-role">Veterinarian</span>
+                    </div>
+                </div>
+                <button class="logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item active" data-tab="overview">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Overview</span>
+                    </li>
+                    <li class="nav-item" data-tab="health-records">
+                        <i class="fas fa-notes-medical"></i>
+                        <span>Health Records</span>
+                    </li>
+                    <li class="nav-item" data-tab="enclosures">
+                        <i class="fas fa-home"></i>
+                        <span>Enclosure Management</span>
+                    </li>
+                    <li class="nav-item" data-tab="breeding-health">
+                        <i class="fas fa-heartbeat"></i>
+                        <span>Breeding Health</span>
+                    </li>
+                    <li class="nav-item" data-tab="nutrition-monitoring">
+                        <i class="fas fa-apple-alt"></i>
+                        <span>Nutrition Monitoring</span>
+                    </li>
+                    <li class="nav-item" data-tab="medical-treatments">
+                        <i class="fas fa-pills"></i>
+                        <span>Medical Treatments</span>
+                    </li>
+                    <li class="nav-item" data-tab="environmental-monitoring">
+                        <i class="fas fa-thermometer-half"></i>
+                        <span>Environmental Monitoring</span>
+                    </li>
+                    <li class="nav-item" data-tab="task-management">
+                        <i class="fas fa-tasks"></i>
+                        <span>Task Management</span>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Overview Tab -->
+            <div class="tab-content active" id="overview">
+                <div class="tab-header">
+                    <h1>Veterinary Care Overview</h1>
+                    <p>Welcome back, Dr. Johnson. Here's your veterinary care overview for today.</p>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-notes-medical"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Total Tortoises</h3>
+                            <p class="stat-number">156</p>
+                            <span class="stat-change positive">+3 this month</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Under Treatment</h3>
+                            <p class="stat-number">8</p>
+                            <span class="stat-change negative">+2 this week</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Healthy Tortoises</h3>
+                            <p class="stat-number">142</p>
+                            <span class="stat-change positive">+5 this month</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Today's Appointments</h3>
+                            <p class="stat-number">12</p>
+                            <span class="stat-change neutral">3 completed</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Health Alerts -->
+                <div class="alerts-section">
+                    <h2>Recent Health Alerts</h2>
+                    <div class="alerts-grid">
+                        <div class="alert-card urgent">
+                            <div class="alert-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="alert-content">
+                                <h3>Atlas - Respiratory Issue</h3>
+                                <p>Male Galapagos tortoise showing signs of respiratory distress. Requires immediate attention.</p>
+                                <span class="alert-time">2 hours ago</span>
+                            </div>
+                            <button class="alert-action">View Details</button>
+                        </div>
+
+                        <div class="alert-card warning">
+                            <div class="alert-icon">
+                                <i class="fas fa-exclamation-circle"></i>
+                            </div>
+                            <div class="alert-content">
+                                <h3>Gaia - Weight Loss</h3>
+                                <p>Female Aldabra tortoise showing 5% weight loss over the past week. Monitor feeding behavior.</p>
+                                <span class="alert-time">4 hours ago</span>
+                            </div>
+                            <button class="alert-action">View Details</button>
+                        </div>
+
+                        <div class="alert-card info">
+                            <div class="alert-icon">
+                                <i class="fas fa-info-circle"></i>
+                            </div>
+                            <div class="alert-content">
+                                <h3>Zeus - Vaccination Due</h3>
+                                <p>Male Sulcata tortoise due for annual vaccination. Schedule appointment.</p>
+                                <span class="alert-time">1 day ago</span>
+                            </div>
+                            <button class="alert-action">Schedule</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Today's Schedule -->
+                <div class="schedule-section">
+                    <h2>Today's Schedule</h2>
+                    <div class="schedule-timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-time">08:00 AM</div>
+                            <div class="timeline-content">
+                                <h3>Morning Health Rounds</h3>
+                                <p>Check all tortoises for general health status</p>
+                                <span class="timeline-status completed">Completed</span>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-time">10:00 AM</div>
+                            <div class="timeline-content">
+                                <h3>Atlas - Respiratory Treatment</h3>
+                                <p>Administer medication and monitor breathing</p>
+                                <span class="timeline-status ongoing">In Progress</span>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-time">02:00 PM</div>
+                            <div class="timeline-content">
+                                <h3>Breeding Health Assessment</h3>
+                                <p>Evaluate breeding pairs for reproductive health</p>
+                                <span class="timeline-status upcoming">Upcoming</span>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-time">04:00 PM</div>
+                            <div class="timeline-content">
+                                <h3>Environmental Monitoring</h3>
+                                <p>Check temperature and humidity in all enclosures</p>
+                                <span class="timeline-status upcoming">Upcoming</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Health Records Tab -->
+            <div class="tab-content" id="health-records">
+                <div class="tab-header">
+                    <h1>Health Records</h1>
+                    <p>Maintain detailed health records for each tortoise</p>
+                </div>
+
+                <div class="records-controls">
+                    <input type="text" placeholder="Search tortoise by ID or name..." class="search-input">
+                    <button class="table-btn add-btn">
+                        <i class="fas fa-plus"></i>
+                        Add New Record
+                    </button>
+                </div>
+
+                <div class="records-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tortoise ID</th>
+                                <th>Name</th>
+                                <th>Species</th>
+                                <th>Age</th>
+                                <th>Gender</th>
+                                <th>Health Status</th>
+                                <th>Last Checkup</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>T001</td>
+                                <td>Atlas</td>
+                                <td>Galapagos</td>
+                                <td>45 years</td>
+                                <td>Male</td>
+                                <td><span class="status monitoring">Under Treatment</span></td>
+                                <td>Today</td>
+                                <td>
+                                    <button class="action-btn primary">View Details</button>
+                                    <button class="action-btn secondary">Update</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>T002</td>
+                                <td>Gaia</td>
+                                <td>Aldabra</td>
+                                <td>38 years</td>
+                                <td>Female</td>
+                                <td><span class="status monitoring">Monitoring</span></td>
+                                <td>Yesterday</td>
+                                <td>
+                                    <button class="action-btn primary">View Details</button>
+                                    <button class="action-btn secondary">Update</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>T003</td>
+                                <td>Zeus</td>
+                                <td>Sulcata</td>
+                                <td>25 years</td>
+                                <td>Male</td>
+                                <td><span class="status healthy">Healthy</span></td>
+                                <td>3 days ago</td>
+                                <td>
+                                    <button class="action-btn primary">View Details</button>
+                                    <button class="action-btn secondary">Update</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Enclosure Management Tab -->
+            <div class="tab-content" id="enclosures">
+                <div class="tab-header">
+                    <h1>Enclosure Management</h1>
+                    <p>Track enclosure information and environmental parameters</p>
+                </div>
+
+                <div class="enclosures-grid">
+                    <div class="enclosure-card">
+                        <div class="enclosure-header">
+                            <h3>Enclosure A - Galapagos Habitat</h3>
+                            <span class="enclosure-status active">Active</span>
+                        </div>
+                        <div class="enclosure-details">
+                            <p><strong>Size:</strong> 500 sq meters</p>
+                            <p><strong>Current Occupants:</strong> 8 tortoises</p>
+                            <p><strong>Temperature:</strong> 25°C</p>
+                            <p><strong>Humidity:</strong> 65%</p>
+                            <p><strong>Last Maintenance:</strong> 2 days ago</p>
+                        </div>
+                        <div class="enclosure-actions">
+                            <button class="action-btn primary">View Details</button>
+                            <button class="action-btn secondary">Update Parameters</button>
+                        </div>
+                    </div>
+
+                    <div class="enclosure-card">
+                        <div class="enclosure-header">
+                            <h3>Enclosure B - Aldabra Habitat</h3>
+                            <span class="enclosure-status active">Active</span>
+                        </div>
+                        <div class="enclosure-details">
+                            <p><strong>Size:</strong> 400 sq meters</p>
+                            <p><strong>Current Occupants:</strong> 6 tortoises</p>
+                            <p><strong>Temperature:</strong> 28°C</p>
+                            <p><strong>Humidity:</strong> 70%</p>
+                            <p><strong>Last Maintenance:</strong> 1 day ago</p>
+                        </div>
+                        <div class="enclosure-actions">
+                            <button class="action-btn primary">View Details</button>
+                            <button class="action-btn secondary">Update Parameters</button>
+                        </div>
+                    </div>
+
+                    <div class="enclosure-card">
+                        <div class="enclosure-header">
+                            <h3>Enclosure C - Sulcata Habitat</h3>
+                            <span class="enclosure-status maintenance">Maintenance</span>
+                        </div>
+                        <div class="enclosure-details">
+                            <p><strong>Size:</strong> 300 sq meters</p>
+                            <p><strong>Current Occupants:</strong> 4 tortoises</p>
+                            <p><strong>Temperature:</strong> 30°C</p>
+                            <p><strong>Humidity:</strong> 55%</p>
+                            <p><strong>Last Maintenance:</strong> Today</p>
+                        </div>
+                        <div class="enclosure-actions">
+                            <button class="action-btn primary">View Details</button>
+                            <button class="action-btn secondary">Update Parameters</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Breeding Health Tab -->
+            <div class="tab-content" id="breeding-health">
+                <div class="tab-header">
+                    <h1>Breeding Health Management</h1>
+                    <p>Monitor breeding pairs and reproductive health</p>
+                </div>
+
+                <div class="breeding-health-grid">
+                    <div class="breeding-card">
+                        <div class="breeding-header">
+                            <h3>Pair 1 - Atlas & Gaia</h3>
+                            <span class="breeding-status active">Active</span>
+                        </div>
+                        <div class="breeding-details">
+                            <p><strong>Mating Date:</strong> March 15, 2024</p>
+                            <p><strong>Nesting Date:</strong> April 10, 2024</p>
+                            <p><strong>Egg Count:</strong> 12 eggs</p>
+                            <p><strong>Incubation Period:</strong> 120 days</p>
+                            <p><strong>Health Status:</strong> Excellent</p>
+                        </div>
+                        <div class="breeding-actions">
+                            <button class="action-btn primary">Health Assessment</button>
+                            <button class="action-btn secondary">Update Records</button>
+                        </div>
+                    </div>
+
+                    <div class="breeding-card">
+                        <div class="breeding-header">
+                            <h3>Pair 2 - Zeus & Hera</h3>
+                            <span class="breeding-status monitoring">Monitoring</span>
+                        </div>
+                        <div class="breeding-details">
+                            <p><strong>Mating Date:</strong> March 20, 2024</p>
+                            <p><strong>Nesting Date:</strong> April 15, 2024</p>
+                            <p><strong>Egg Count:</strong> 8 eggs</p>
+                            <p><strong>Incubation Period:</strong> 110 days</p>
+                            <p><strong>Health Status:</strong> Good</p>
+                        </div>
+                        <div class="breeding-actions">
+                            <button class="action-btn primary">Health Assessment</button>
+                            <button class="action-btn secondary">Update Records</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nutrition Monitoring Tab -->
+            <div class="tab-content" id="nutrition-monitoring">
+                <div class="tab-header">
+                    <h1>Nutrition Monitoring</h1>
+                    <p>Track feeding schedules and dietary requirements</p>
+                </div>
+
+                <div class="nutrition-grid">
+                    <div class="nutrition-card">
+                        <div class="nutrition-header">
+                            <h3>Feeding Schedule</h3>
+                            <span class="nutrition-status active">Active</span>
+                        </div>
+                        <div class="nutrition-details">
+                            <p><strong>Morning Feeding:</strong> 08:00 AM</p>
+                            <p><strong>Afternoon Feeding:</strong> 02:00 PM</p>
+                            <p><strong>Evening Feeding:</strong> 06:00 PM</p>
+                            <p><strong>Food Inventory:</strong> 85% stocked</p>
+                            <p><strong>Last Inventory Check:</strong> Yesterday</p>
+                        </div>
+                        <div class="nutrition-actions">
+                            <button class="action-btn primary">Update Schedule</button>
+                            <button class="action-btn secondary">Check Inventory</button>
+                        </div>
+                    </div>
+
+                    <div class="nutrition-card">
+                        <div class="nutrition-header">
+                            <h3>Dietary Requirements</h3>
+                            <span class="nutrition-status active">Active</span>
+                        </div>
+                        <div class="nutrition-details">
+                            <p><strong>Galapagos Tortoises:</strong> Grasses, leaves, fruits</p>
+                            <p><strong>Aldabra Tortoises:</strong> Grasses, herbs, flowers</p>
+                            <p><strong>Sulcata Tortoises:</strong> Grasses, hay, vegetables</p>
+                            <p><strong>Supplements:</strong> Calcium, vitamins</p>
+                            <p><strong>Water Requirements:</strong> Daily access</p>
+                        </div>
+                        <div class="nutrition-actions">
+                            <button class="action-btn primary">Update Requirements</button>
+                            <button class="action-btn secondary">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Medical Treatments Tab -->
+            <div class="tab-content" id="medical-treatments">
+                <div class="tab-header">
+                    <h1>Medical Treatments</h1>
+                    <p>Document health assessments and medical treatments</p>
+                </div>
+
+                <div class="treatments-grid">
+                    <div class="treatment-card">
+                        <div class="treatment-header">
+                            <h3>Atlas - Respiratory Treatment</h3>
+                            <span class="treatment-status ongoing">Ongoing</span>
+                        </div>
+                        <div class="treatment-details">
+                            <p><strong>Diagnosis:</strong> Upper respiratory infection</p>
+                            <p><strong>Treatment:</strong> Antibiotics, rest, monitoring</p>
+                            <p><strong>Start Date:</strong> March 18, 2024</p>
+                            <p><strong>Expected Duration:</strong> 10 days</p>
+                            <p><strong>Progress:</strong> Improving</p>
+                        </div>
+                        <div class="treatment-actions">
+                            <button class="action-btn primary">Update Progress</button>
+                            <button class="action-btn secondary">View History</button>
+                        </div>
+                    </div>
+
+                    <div class="treatment-card">
+                        <div class="treatment-header">
+                            <h3>Gaia - Weight Monitoring</h3>
+                            <span class="treatment-status monitoring">Monitoring</span>
+                        </div>
+                        <div class="treatment-details">
+                            <p><strong>Issue:</strong> Weight loss (5% over week)</p>
+                            <p><strong>Action:</strong> Enhanced feeding, monitoring</p>
+                            <p><strong>Start Date:</strong> March 20, 2024</p>
+                            <p><strong>Duration:</strong> Ongoing</p>
+                            <p><strong>Progress:</strong> Stable</p>
+                        </div>
+                        <div class="treatment-actions">
+                            <button class="action-btn primary">Update Progress</button>
+                            <button class="action-btn secondary">View History</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Environmental Monitoring Tab -->
+            <div class="tab-content" id="environmental-monitoring">
+                <div class="tab-header">
+                    <h1>Environmental Monitoring</h1>
+                    <p>Monitor environmental conditions in enclosures and incubators</p>
+                </div>
+
+                <div class="environmental-grid">
+                    <div class="environmental-card">
+                        <div class="environmental-header">
+                            <h3>Enclosure A - Temperature & Humidity</h3>
+                            <span class="environmental-status optimal">Optimal</span>
+                        </div>
+                        <div class="environmental-details">
+                            <p><strong>Current Temperature:</strong> 25°C</p>
+                            <p><strong>Current Humidity:</strong> 65%</p>
+                            <p><strong>UV Index:</strong> 6.5</p>
+                            <p><strong>Last Updated:</strong> 5 minutes ago</p>
+                            <p><strong>Status:</strong> All parameters normal</p>
+                        </div>
+                        <div class="environmental-actions">
+                            <button class="action-btn primary">View History</button>
+                            <button class="action-btn secondary">Set Alerts</button>
+                        </div>
+                    </div>
+
+                    <div class="environmental-card">
+                        <div class="environmental-header">
+                            <h3>Incubator 1 - Egg Incubation</h3>
+                            <span class="environmental-status optimal">Optimal</span>
+                        </div>
+                        <div class="environmental-details">
+                            <p><strong>Temperature:</strong> 29°C</p>
+                            <p><strong>Humidity:</strong> 80%</p>
+                            <p><strong>Eggs:</strong> 12 eggs</p>
+                            <p><strong>Days Remaining:</strong> 45 days</p>
+                            <p><strong>Status:</strong> Development normal</p>
+                        </div>
+                        <div class="environmental-actions">
+                            <button class="action-btn primary">View History</button>
+                            <button class="action-btn secondary">Adjust Settings</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Task Management Tab -->
+            <div class="tab-content" id="task-management">
+                <div class="tab-header">
+                    <h1>Task Management</h1>
+                    <p>Assign tasks to staff members and track completion status</p>
+                </div>
+
+                <div class="tasks-grid">
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Morning Health Checks</h3>
+                            <span class="task-status completed">Completed</span>
+                        </div>
+                        <div class="task-details">
+                            <p><strong>Assigned To:</strong> Dr. Johnson</p>
+                            <p><strong>Due Date:</strong> Today 08:00 AM</p>
+                            <p><strong>Priority:</strong> High</p>
+                            <p><strong>Description:</strong> Check all tortoises for general health status</p>
+                        </div>
+                        <div class="task-actions">
+                            <button class="action-btn primary">View Details</button>
+                            <button class="action-btn secondary">Update Status</button>
+                        </div>
+                    </div>
+
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Atlas Treatment</h3>
+                            <span class="task-status ongoing">In Progress</span>
+                        </div>
+                        <div class="task-details">
+                            <p><strong>Assigned To:</strong> Dr. Johnson</p>
+                            <p><strong>Due Date:</strong> Today 10:00 AM</p>
+                            <p><strong>Priority:</strong> Critical</p>
+                            <p><strong>Description:</strong> Administer respiratory medication to Atlas</p>
+                        </div>
+                        <div class="task-actions">
+                            <button class="action-btn primary">View Details</button>
+                            <button class="action-btn secondary">Update Status</button>
+                        </div>
+                    </div>
+
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Environmental Monitoring</h3>
+                            <span class="task-status upcoming">Upcoming</span>
+                        </div>
+                        <div class="task-details">
+                            <p><strong>Assigned To:</strong> Staff Team</p>
+                            <p><strong>Due Date:</strong> Today 04:00 PM</p>
+                            <p><strong>Priority:</strong> Medium</p>
+                            <p><strong>Description:</strong> Check temperature and humidity in all enclosures</p>
+                        </div>
+                        <div class="task-actions">
+                            <button class="action-btn primary">View Details</button>
+                            <button class="action-btn secondary">Assign</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Logout Confirmation Modal -->
+    <div class="modal" id="logoutModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Confirm Logout</h3>
+                <button class="modal-close" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to logout from the Veterinarian Dashboard?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn secondary" id="cancelLogout">Cancel</button>
+                <button class="modal-btn primary" id="confirmLogout">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="vet-dashboard-script.js"></script>
+</body>
+</html> 

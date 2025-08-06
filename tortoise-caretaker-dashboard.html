@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tortoise Caretaker Dashboard - Tortoise Conservation Center</title>
+    <link rel="stylesheet" href="tortoise-caretaker-dashboard-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="header-content">
+            <div class="header-left">
+                <div class="logo">
+                    <i class="fas fa-turtle"></i>
+                    <span>Tortoise Caretaker Dashboard</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <i class="fas fa-turtle"></i>
+                    </div>
+                    <div class="user-details">
+                        <span class="user-name">Sarah Johnson</span>
+                        <span class="user-role">Tortoise Caretaker</span>
+                    </div>
+                </div>
+                <button class="logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item active" data-tab="overview">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Overview</span>
+                    </li>
+                    <li class="nav-item" data-tab="tortoise-care">
+                        <i class="fas fa-turtle"></i>
+                        <span>Tortoise Care</span>
+                    </li>
+                    <li class="nav-item" data-tab="feeding-schedule">
+                        <i class="fas fa-leaf"></i>
+                        <span>Feeding Schedule</span>
+                    </li>
+                    <li class="nav-item" data-tab="enclosure-maintenance">
+                        <i class="fas fa-home"></i>
+                        <span>Enclosure Maintenance</span>
+                    </li>
+                    <li class="nav-item" data-tab="health-monitoring">
+                        <i class="fas fa-heartbeat"></i>
+                        <span>Health Monitoring</span>
+                    </li>
+                    <li class="nav-item" data-tab="daily-tasks">
+                        <i class="fas fa-tasks"></i>
+                        <span>Daily Tasks</span>
+                    </li>
+                    <li class="nav-item" data-tab="care-reports">
+                        <i class="fas fa-clipboard-list"></i>
+                        <span>Care Reports</span>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Overview Tab -->
+            <div class="tab-content active" id="overview">
+                <div class="tab-header">
+                    <h1>Tortoise Care Overview</h1>
+                    <p>Welcome back, Sarah. Here's your daily care overview for the tortoises.</p>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-turtle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Total Tortoises</h3>
+                            <p class="stat-number">45</p>
+                            <span class="stat-change positive">+3 this month</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Feedings Today</h3>
+                            <p class="stat-number">12</p>
+                            <span class="stat-change positive">All completed</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Enclosures Cleaned</h3>
+                            <p class="stat-number">8</p>
+                            <span class="stat-change positive">2 remaining</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Health Checks</h3>
+                            <p class="stat-number">15</p>
+                            <span class="stat-change positive">All healthy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2>Quick Actions</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="quick-actions-grid">
+                            <button class="quick-action-btn">
+                                <i class="fas fa-plus"></i>
+                                <span>Add Care Record</span>
+                            </button>
+                            <button class="quick-action-btn">
+                                <i class="fas fa-calendar"></i>
+                                <span>View Schedule</span>
+                            </button>
+                            <button class="quick-action-btn">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>Report Issue</span>
+                            </button>
+                            <button class="quick-action-btn">
+                                <i class="fas fa-file-alt"></i>
+                                <span>Generate Report</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tortoise Care Tab -->
+            <div class="tab-content" id="tortoise-care">
+                <div class="tab-header">
+                    <h1>Tortoise Care Management</h1>
+                    <p>Manage individual tortoise care records and daily activities.</p>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2>Care Records</h2>
+                        <button class="btn" id="addCareRecordBtn">
+                            <i class="fas fa-plus"></i>
+                            Add Record
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="search-filter">
+                            <div class="search-box">
+                                <i class="fas fa-search"></i>
+                                <input type="text" placeholder="Search tortoises...">
+                            </div>
+                            <select class="filter-select">
+                                <option value="all">All Species</option>
+                                <option value="galapagos">Galapagos</option>
+                                <option value="sulcata">Sulcata</option>
+                                <option value="hermann">Hermann</option>
+                            </select>
+                        </div>
+
+                        <div class="table-container">
+                            <table id="care-table">
+                                <thead>
+                                    <tr>
+                                        <th>Tortoise ID</th>
+                                        <th>Species</th>
+                                        <th>Last Feeding</th>
+                                        <th>Last Cleaning</th>
+                                        <th>Health Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>TC001</td>
+                                        <td>Galapagos</td>
+                                        <td>Today 08:00</td>
+                                        <td>Yesterday</td>
+                                        <td><span class="status-badge status-completed">Healthy</span></td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm">View</button>
+                                            <button class="btn btn-secondary btn-sm">Edit</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>TC002</td>
+                                        <td>Sulcata</td>
+                                        <td>Today 09:00</td>
+                                        <td>Today</td>
+                                        <td><span class="status-badge status-completed">Healthy</span></td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm">View</button>
+                                            <button class="btn btn-secondary btn-sm">Edit</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>TC003</td>
+                                        <td>Hermann</td>
+                                        <td>Today 10:00</td>
+                                        <td>Yesterday</td>
+                                        <td><span class="status-badge status-pending">Needs Check</span></td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm">View</button>
+                                            <button class="btn btn-secondary btn-sm">Edit</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feeding Schedule Tab -->
+            <div class="tab-content" id="feeding-schedule">
+                <div class="tab-header">
+                    <h1>Feeding Schedule</h1>
+                    <p>Manage feeding schedules and dietary requirements for all tortoises.</p>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2>Today's Feeding Schedule</h2>
+                        <button class="btn" id="addFeedingBtn">
+                            <i class="fas fa-plus"></i>
+                            Add Feeding
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-container">
+                            <table id="feeding-table">
+                                <thead>
+                                    <tr>
+                                        <th>Time</th>
+                                        <th>Tortoise ID</th>
+                                        <th>Food Type</th>
+                                        <th>Quantity</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>08:00</td>
+                                        <td>TC001</td>
+                                        <td>Mixed Greens</td>
+                                        <td>200g</td>
+                                        <td><span class="status-badge status-completed">Completed</span></td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm">View</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>09:00</td>
+                                        <td>TC002</td>
+                                        <td>Hay + Vegetables</td>
+                                        <td>300g</td>
+                                        <td><span class="status-badge status-completed">Completed</span></td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm">View</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>10:00</td>
+                                        <td>TC003</td>
+                                        <td>Leafy Greens</td>
+                                        <td>150g</td>
+                                        <td><span class="status-badge status-in-progress">In Progress</span></td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm">View</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enclosure Maintenance Tab -->
+            <div class="tab-content" id="enclosure-maintenance">
+                <div class="tab-header">
+                    <h1>Enclosure Maintenance</h1>
+                    <p>Track enclosure cleaning and maintenance activities.</p>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2>Maintenance Schedule</h2>
+                        <button class="btn" id="addMaintenanceBtn">
+                            <i class="fas fa-plus"></i>
+                            Add Task
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-container">
+                            <table id="maintenance-table">
+                                <thead>
+                                    <tr>
+                                        <th>Enclosure</th>
+                                        <th>Task Type</th>
+                                        <th>Last Done</th>
+                                        <th>Next Due</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Enclosure A</td>
+                                        <td>Daily Cleaning</td>
+                                        <td>Today 07:00</td>
+                                        <td>Tomorrow</td>
+                                        <td><span class="status-badge status-completed">Completed</span></td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm">View</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Enclosure B</td>
+                                        <td>Water Change</td>
+                                        <td>Yesterday</td>
+                                        <td>Today</td>
+                                        <td><span class="status-badge status-pending">Pending</span></td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm">View</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Enclosure C</td>
+                                        <td>Substrate Change</td>
+                                        <td>3 days ago</td>
+                                        <td>Next Week</td>
+                                        <td><span class="status-badge status-completed">Completed</span></td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm">View</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Health Monitoring Tab -->
+            <div class="tab-content" id="health-monitoring">
+                <div class="tab-header">
+                    <h1>Health Monitoring</h1>
+                    <p>Monitor tortoise health and report any concerns.</p>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2>Health Observations</h2>
+                        <button class="btn" id="addObservationBtn">
+                            <i class="fas fa-plus"></i>
+                            Add Observation
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-container">
+                            <table id="health-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Tortoise ID</th>
+                                        <th>Observation</th>
+                                        <th>Action Taken</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Today</td>
+                                        <td>TC001</td>
+                                        <td>Normal activity, good appetite</td>
+                                        <td>None needed</td>
+                                        <td><span class="status-badge status-completed">Normal</span></td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm">View</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Today</td>
+                                        <td>TC003</td>
+                                        <td>Reduced appetite, lethargic</td>
+                                        <td>Referred to vet</td>
+                                        <td><span class="status-badge status-pending">Under Observation</span></td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm">View</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Daily Tasks Tab -->
+            <div class="tab-content" id="daily-tasks">
+                <div class="tab-header">
+                    <h1>Daily Tasks</h1>
+                    <p>Track and manage daily care tasks and responsibilities.</p>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2>Today's Tasks</h2>
+                        <button class="btn" id="addTaskBtn">
+                            <i class="fas fa-plus"></i>
+                            Add Task
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-container">
+                            <table id="tasks-table">
+                                <thead>
+                                    <tr>
+                                        <th>Task</th>
+                                        <th>Time</th>
+                                        <th>Priority</th>
+                                        <th>Status</th>
+                                        <th>Notes</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Morning Feeding Round</td>
+                                        <td>08:00</td>
+                                        <td>High</td>
+                                        <td><span class="status-badge status-completed">Completed</span></td>
+                                        <td>All tortoises fed</td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm">View</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Enclosure Cleaning</td>
+                                        <td>10:00</td>
+                                        <td>Medium</td>
+                                        <td><span class="status-badge status-in-progress">In Progress</span></td>
+                                        <td>2 enclosures remaining</td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm">View</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Health Check Round</td>
+                                        <td>14:00</td>
+                                        <td>High</td>
+                                        <td><span class="status-badge status-pending">Pending</span></td>
+                                        <td>Schedule with vet</td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm">View</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Care Reports Tab -->
+            <div class="tab-content" id="care-reports">
+                <div class="tab-header">
+                    <h1>Care Reports</h1>
+                    <p>Generate and view care reports and summaries.</p>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2>Recent Reports</h2>
+                        <button class="btn" id="generateReportBtn">
+                            <i class="fas fa-file-alt"></i>
+                            Generate Report
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-container">
+                            <table id="reports-table">
+                                <thead>
+                                    <tr>
+                                        <th>Report Date</th>
+                                        <th>Report Type</th>
+                                        <th>Summary</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Today</td>
+                                        <td>Daily Care Summary</td>
+                                        <td>All tasks completed, 2 health observations</td>
+                                        <td><span class="status-badge status-completed">Generated</span></td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm">View</button>
+                                            <button class="btn btn-secondary btn-sm">Download</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Yesterday</td>
+                                        <td>Weekly Health Report</td>
+                                        <td>45 tortoises checked, 1 referral</td>
+                                        <td><span class="status-badge status-completed">Generated</span></td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm">View</button>
+                                            <button class="btn btn-secondary btn-sm">Download</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Logout Modal -->
+    <div id="logoutModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Confirm Logout</h2>
+                <span class="close" id="closeModal">&times;</span>
+            </div>
+            <p>Are you sure you want to logout?</p>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" id="cancelLogout">Cancel</button>
+                <button class="btn btn-primary" id="confirmLogout">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="tortoise-caretaker-dashboard-script.js"></script>
+</body>
+</html> 

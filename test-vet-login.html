@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Veterinarian Login</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-form { max-width: 400px; margin: 0 auto; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; }
+        input, select { width: 100%; padding: 8px; margin-bottom: 10px; }
+        button { padding: 10px 20px; background: #228B22; color: white; border: none; cursor: pointer; }
+        .result { margin-top: 20px; padding: 10px; background: #f0f0f0; }
+    </style>
+</head>
+<body>
+    <h1>Test Veterinarian Login</h1>
+    
+    <div class="test-form">
+        <div class="form-group">
+            <label>User ID:</label>
+            <input type="text" id="testUserId" value="VETERINARIAN111">
+        </div>
+        
+        <div class="form-group">
+            <label>Password:</label>
+            <input type="password" id="testPassword" value="1234">
+        </div>
+        
+        <div class="form-group">
+            <label>User Type:</label>
+            <select id="testUserType">
+                <option value="veterinarian" selected>Veterinarian</option>
+                <option value="breeding manager">Breeding Manager</option>
+                <option value="nutritionist">Nutritionist</option>
+            </select>
+        </div>
+        
+        <button onclick="testLogin()">Test Login</button>
+        
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        // User Credentials (copied from login-script.js)
+        const USER_CREDENTIALS = {
+            veterinarian: {
+                userId: 'VETERINARIAN111',
+                password: '1234',
+                userType: 'veterinarian',
+                dashboard: 'vet-dashboard.html'
+            },
+            breedingManager: {
+                userId: 'BREEDING MANAGER222',
+                password: '222',
+                userType: 'breeding manager',
+                dashboard: 'breeding-manager-dashboard.html'
+            },
+            nutritionist: {
+                userId: 'NUTRITIONIST333',
+                password: '333',
+                userType: 'nutritionist',
+                dashboard: 'nutritionist-dashboard.html'
+            }
+        };
+
+        function testLogin() {
+            const formData = {
+                userId: document.getElementById('testUserId').value.trim(),
+                password: document.getElementById('testPassword').value.trim(),
+                userType: document.getElementById('testUserType').value
+            };
+            
+            console.log('Test form data:', formData);
+            
+            // Validate credentials
+            const validUser = validateUserCredentials(formData);
+            
+            const resultDiv = document.getElementById('result');
+            if (validUser) {
+                resultDiv.innerHTML = `
+                    <h3>✅ Login Successful!</h3>
+                    <p>User Type: ${validUser.userType}</p>
+                    <p>Dashboard: ${validUser.dashboard}</p>
+                    <button onclick="redirectToDashboard('${validUser.dashboard}')">Go to Dashboard</button>
+                `;
+            } else {
+                resultDiv.innerHTML = `
+                    <h3>❌ Login Failed!</h3>
+                    <p>Invalid credentials. Please check your input.</p>
+                `;
+            }
+        }
+
+        function validateUserCredentials(data) {
+            console.log('Validating credentials for:', data.userType);
+            
+            for (const [key, credentials] of Object.entries(USER_CREDENTIALS)) {
+                console.log('Checking against:', credentials.userType);
+                console.log('Expected User ID:', credentials.userId, 'Got:', data.userId);
+                console.log('Expected Password:', credentials.password, 'Got:', data.password);
+                console.log('Expected User Type:', credentials.userType, 'Got:', data.userType);
+                
+                const userIdMatch = data.userId === credentials.userId;
+                const passwordMatch = data.password === credentials.password;
+                const userTypeMatch = data.userType === credentials.userType;
+                
+                console.log('User ID match:', userIdMatch);
+                console.log('Password match:', passwordMatch);
+                console.log('User Type match:', userTypeMatch);
+                
+                const isValid = userIdMatch && passwordMatch && userTypeMatch;
+                
+                console.log('Validation result for', credentials.userType, ':', isValid);
+                
+                if (isValid) {
+                    console.log('✅ Found matching credentials for:', credentials.userType);
+                    return credentials;
+                }
+            }
+            
+            console.log('❌ No matching credentials found');
+            return null;
+        }
+
+        function redirectToDashboard(dashboard) {
+            window.location.href = dashboard;
+        }
+    </script>
+</body>
+</html> 

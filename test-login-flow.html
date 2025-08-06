@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Flow Test - Tortoise Conservation Center</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f7fa;
+        }
+        .test-container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #228B22;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+        }
+        .test-section h2 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .test-step {
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #228B22;
+        }
+        .credentials {
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .credentials strong {
+            color: #228B22;
+        }
+        .btn {
+            background: linear-gradient(135deg, #228B22, #32CD32);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 5px;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(34, 139, 34, 0.3);
+        }
+        .btn-secondary {
+            background: #6c757d;
+        }
+        .btn-secondary:hover {
+            box-shadow: 0 10px 20px rgba(108, 117, 125, 0.3);
+        }
+        .status {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🐢 Login Flow Test</h1>
+        
+        <div class="test-section">
+            <h2>✅ Test Overview</h2>
+            <p>This page helps verify that the login flow is working correctly for the Tortoise Conservation Center Management System.</p>
+            
+            <div class="status info">
+                <strong>Current Implementation:</strong> Only veterinarian role is fully implemented with dashboard access.
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>🔐 Valid Veterinarian Credentials</h2>
+            <div class="credentials">
+                <strong>User ID:</strong> VETERINARIAN111<br>
+                <strong>Password:</strong> 1234<br>
+                <strong>User Type:</strong> veterinarian
+            </div>
+            <p>These credentials should successfully log in and redirect to the veterinarian dashboard.</p>
+        </div>
+
+        <div class="test-section">
+            <h2>🧪 Test Steps</h2>
+            
+            <div class="test-step">
+                <strong>Step 1:</strong> Click "Go to Landing Page" to start the test
+            </div>
+            
+            <div class="test-step">
+                <strong>Step 2:</strong> On the landing page, click the "Login" button in the navigation
+            </div>
+            
+            <div class="test-step">
+                <strong>Step 3:</strong> On the login page, enter the veterinarian credentials above
+            </div>
+            
+            <div class="test-step">
+                <strong>Step 4:</strong> Click "Login" and verify you are redirected to the veterinarian dashboard
+            </div>
+            
+            <div class="test-step">
+                <strong>Step 5:</strong> Test invalid credentials to ensure error handling works
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>🚀 Quick Test Links</h2>
+            <a href="index.html" class="btn">Go to Landing Page</a>
+            <a href="login.html" class="btn">Go to Login Page</a>
+            <a href="vet-dashboard.html" class="btn btn-secondary">Go to Dashboard (Direct)</a>
+        </div>
+
+        <div class="test-section">
+            <h2>❌ Invalid Credential Tests</h2>
+            <p>Try these combinations to test error handling:</p>
+            
+            <div class="test-step">
+                <strong>Test 1:</strong> Correct User ID and Password, but wrong User Type (e.g., "admin")
+            </div>
+            
+            <div class="test-step">
+                <strong>Test 2:</strong> Wrong User ID (e.g., "VETERINARIAN222")
+            </div>
+            
+            <div class="test-step">
+                <strong>Test 3:</strong> Wrong Password (e.g., "5678")
+            </div>
+            
+            <div class="test-step">
+                <strong>Test 4:</strong> Empty fields
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>📋 Expected Results</h2>
+            
+            <div class="status success">
+                <strong>✅ Valid Credentials:</strong> Success message → Redirect to veterinarian dashboard
+            </div>
+            
+            <div class="status error">
+                <strong>❌ Invalid Credentials:</strong> Error notification appears → Stay on login page
+            </div>
+            
+            <div class="status info">
+                <strong>ℹ️ Other User Types:</strong> Currently show error (only veterinarian is implemented)
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>🔧 Technical Details</h2>
+            <ul>
+                <li><strong>Login Page:</strong> login.html (main login page)</li>
+                <li><strong>Dashboard:</strong> vet-dashboard.html (veterinarian dashboard)</li>
+                <li><strong>Validation:</strong> Client-side JavaScript validation</li>
+                <li><strong>Storage:</strong> LocalStorage for "Remember Me" functionality</li>
+                <li><strong>Session:</strong> 24-hour session timeout</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <h2>🧭 Navigation Options</h2>
+            <div class="test-step">
+                <strong>From Login Page:</strong>
+                <ul>
+                    <li>Click "Back to Home" button (top left)</li>
+                    <li>Click "Back to Landing Page" button (in header)</li>
+                    <li>Press <strong>Escape</strong> key</li>
+                    <li>Press <strong>Home</strong> key</li>
+                    <li>Press <strong>Ctrl + Backspace</strong></li>
+                </ul>
+            </div>
+            <div class="test-step">
+                <strong>After Logout:</strong> A welcome message appears with a "Back to Landing Page" button
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>📝 Notes</h2>
+            <div class="status info">
+                <strong>Legacy Files:</strong> vet-login.html still exists but is no longer the primary login method.
+            </div>
+            <div class="status info">
+                <strong>Future Implementation:</strong> Other user roles (Admin, Caretaker, Researcher, Volunteer) will have their own dashboards.
+            </div>
+            <div class="status success">
+                <strong>Navigation Fixed:</strong> Multiple ways to return to the landing page from the login page.
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
