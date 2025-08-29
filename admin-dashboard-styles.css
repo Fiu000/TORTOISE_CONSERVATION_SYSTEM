@@ -268,6 +268,17 @@ body {
     color: #fff;
 }
 
+/* Edit button appearance */
+.edit-row-btn {
+    background: #fff;
+    color: #228B22;
+    border: 1.5px solid #32CD32;
+}
+.edit-row-btn:hover {
+    background: #32CD32;
+    color: #fff;
+}
+
 .dashboard-table-wrapper {
     overflow-x: auto;
     border-radius: 15px;
