@@ -33,7 +33,8 @@ function showAddModal(dash, table) {
     // Get columns
     const ths = table.querySelectorAll('thead th');
     ths.forEach((th, idx) => {
-        const label = th.textContent;
+        const label = th.textContent.trim();
+        if (label.toLowerCase() === 'actions' || label.toLowerCase() === 'select') return; // skip actions/select columns
         const input = document.createElement('input');
         input.type = 'text';
         input.name = 'col' + idx;
@@ -56,15 +57,98 @@ addForm.onsubmit = function(e) {
     if (!currentAddTable) return;
     const values = Array.from(addForm.querySelectorAll('input')).map(i => i.value);
     const tr = document.createElement('tr');
+    // Prepend select checkbox cell
+    const selectTd = document.createElement('td');
+    const selectCb = document.createElement('input');
+    selectCb.type = 'checkbox';
+    selectCb.className = 'row-select';
+    selectTd.appendChild(selectCb);
+    tr.appendChild(selectTd);
+
     values.forEach(val => {
         const td = document.createElement('td');
         td.textContent = val;
         tr.appendChild(td);
     });
+    // append actions cell with edit button
+    const actionsTd = document.createElement('td');
+    const editBtn = document.createElement('button');
+    editBtn.className = 'table-btn edit-row-btn';
+    editBtn.innerHTML = '<i class="fas fa-edit"></i> Edit';
+    actionsTd.appendChild(editBtn);
+    tr.appendChild(actionsTd);
     currentAddTable.querySelector('tbody').appendChild(tr);
     addModal.classList.remove('active');
     updateChartForDashboard(currentAddDash);
 };
+
+// Edit Modal logic
+const editModal = document.getElementById('editModal');
+const editForm = document.getElementById('editForm');
+const editFormFields = document.getElementById('editFormFields');
+const editModalTitle = document.getElementById('editModalTitle');
+const closeEditModal = document.getElementById('closeEditModal');
+const cancelEdit = document.getElementById('cancelEdit');
+let currentEditRow = null;
+
+function showEditModal(row) {
+    currentEditRow = row;
+    editModalTitle.textContent = 'Edit Entry';
+    editFormFields.innerHTML = '';
+    // Get columns from current row's table header
+    const table = row.closest('table');
+    const ths = table.querySelectorAll('thead th');
+    const tds = Array.from(row.children);
+    // Build inputs for all data cells except the last Actions column
+    for (let i = 0; i < tds.length; i++) {
+        const isActionCell = tds[i].querySelector('button');
+        if (isActionCell) continue;
+        const label = ths[i] ? ths[i].textContent : `Column ${i+1}`;
+        const value = tds[i].textContent;
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.name = 'col' + i;
+        input.placeholder = label;
+        input.value = value;
+        input.required = true;
+        input.className = 'modal-input';
+        const fieldDiv = document.createElement('div');
+        fieldDiv.className = 'modal-field';
+        fieldDiv.appendChild(input);
+        editFormFields.appendChild(fieldDiv);
+    }
+    editModal.classList.add('active');
+}
+
+if (closeEditModal) closeEditModal.onclick = () => editModal.classList.remove('active');
+if (cancelEdit) cancelEdit.onclick = () => editModal.classList.remove('active');
+
+if (editForm) {
+    editForm.onsubmit = function(e) {
+        e.preventDefault();
+        if (!currentEditRow) return;
+        const inputs = Array.from(editForm.querySelectorAll('input'));
+        let dataCellIndex = 0;
+        for (let i = 0; i < currentEditRow.children.length; i++) {
+            const cell = currentEditRow.children[i];
+            const isActionCell = cell.querySelector('button');
+            const isSelectCell = cell.querySelector('input[type="checkbox"]');
+            if (isActionCell || isSelectCell) continue;
+            const newVal = inputs[dataCellIndex++].value;
+            cell.textContent = newVal;
+        }
+        editModal.classList.remove('active');
+        // Update associated chart if exists
+        const dashDiv = currentEditRow.closest('.dashboard-table');
+        if (dashDiv && dashDiv.id) {
+            const dash = dashDiv.id.replace('dashboard-', '');
+            if (typeof updateChartForDashboard === 'function') {
+                updateChartForDashboard(dash);
+            }
+        }
+        currentEditRow = null;
+    };
+}
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -307,14 +391,28 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
-        // Row selection for delete
+        // Row selection for delete and edit handling
         tbody.addEventListener('click', function(e) {
+            const editBtn = e.target.closest('.edit-row-btn');
+            if (editBtn) {
+                e.stopPropagation();
+                const tr = editBtn.closest('tr');
+                showEditModal(tr);
+                return;
+            }
             const tr = e.target.closest('tr');
             if (!tr) return;
-            tr.classList.toggle('selected');
-            if (tr.classList.contains('selected')) {
+            // Toggle checkbox if clicked on row but not on a control
+            const cb = tr.querySelector('.row-select');
+            const clickedCheckbox = e.target === cb;
+            if (!clickedCheckbox && cb) {
+                cb.checked = !cb.checked;
+            }
+            if (cb && cb.checked) {
+                tr.classList.add('selected');
                 selectedRows.add(tr);
             } else {
+                tr.classList.remove('selected');
                 selectedRows.delete(tr);
             }
         });
