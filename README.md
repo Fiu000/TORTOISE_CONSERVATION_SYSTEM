@@ -1,244 +1,245 @@
-# 🐢 Tortoise Conservation Center Management System
+# Tortoise Conservation System
 
-A comprehensive web-based management system designed specifically for tortoise conservation centers to monitor, care for, and protect endangered tortoises.
+A comprehensive management system for tortoise conservation facilities, designed to handle various aspects of tortoise care, breeding, health monitoring, and facility management.
 
-## 🌟 Features
+## Features
 
-### Landing Page
-- **Professional Design**: Modern, responsive landing page with green and earthy tones
-- **Hero Section**: Eye-catching hero with tortoise imagery and compelling messaging
-- **About Section**: Information about the system and conservation statistics
-- **Features Overview**: Comprehensive feature showcase
-- **Contact Information**: Complete contact details for the conservation center
+- **Multi-Role Dashboard System**: Separate dashboards for different staff roles
+- **Health Monitoring**: Comprehensive health tracking and veterinary care management
+- **Breeding Management**: Breeding program coordination and genetic tracking
+- **Task Management**: Staff task assignment and progress tracking
+- **IoT Integration**: Sensor data monitoring and environmental control
+- **Maintenance Tracking**: Facility maintenance and equipment management
+- **Nutrition Management**: Dietary planning and feeding schedules
+- **Database Management**: Centralized data storage and retrieval
 
-### Login System
-- **Secure Authentication**: Professional login interface with credential validation
-- **Multiple User Types**: Support for Administrator, Veterinarian, Caretaker, Researcher, and Volunteer roles
-- **Veterinarian Credentials**:
-  - User ID: `VETERINARIAN111`
-  - Password: `1234`
-  - User Type: `veterinarian`
-- **Remember Me**: Option to save login credentials
-- **Password Toggle**: Show/hide password functionality
-- **Form Validation**: Real-time validation with error messages
-- **Success Animation**: Confetti animation on successful login
-- **Role-based Access**: Only veterinarians can access the veterinarian dashboard
+## Staff Roles
 
-### Veterinarian Dashboard
-A comprehensive dashboard with the following sections:
+1. **Admin Dashboard** - System administration and oversight
+2. **Veterinarian Dashboard** - Medical care and health monitoring
+3. **Tortoise Caretaker Dashboard** - Daily care and feeding
+4. **Breeding Manager Dashboard** - Breeding program management
+5. **Nutritionist Dashboard** - Dietary planning and nutrition
+6. **Maintenance Staff Dashboard** - Facility maintenance
+7. **IoT Staff Dashboard** - Technology and sensor management
+8. **Task Manager Dashboard** - Task coordination and tracking
 
-#### 📊 Overview Tab
-- **Statistics Cards**: Real-time stats for assigned tortoises, active treatments, daily checkups, and alerts
-- **Professional Information**: License number, specialization, on-call status, and experience
-- **Status Management**: Update availability status
+## PHP Server Extension
 
-#### 🐢 Assigned Tortoises Tab
-- **Tortoise Profiles**: Individual cards for each assigned tortoise
-- **Health Status**: Real-time health monitoring (Healthy, Under Treatment, Monitoring)
-- **Quick Actions**: Checkup and records access buttons
-- **Detailed Information**: Species, age, last checkup date
+This project now includes a comprehensive PHP server extension for backend functionality and API endpoints.
 
-#### 🩺 Medical Treatments Tab
-- **Treatment Tracking**: Comprehensive table of ongoing treatments
-- **Status Management**: Track treatment progress (Ongoing, Completed)
-- **Action Buttons**: Update and complete treatment options
+### New PHP Components
 
-#### 💉 Vaccination Records Tab
-- **Vaccination History**: Complete vaccination records for each tortoise
-- **Schedule Management**: Track due dates and vaccination types
-- **Status Tracking**: Up-to-date vaccination status
+- **Configuration Management** (`config.php`) - Centralized application settings
+- **Database Layer** (`database.php`) - Advanced database connection and query management
+- **API Structure** (`api/`) - RESTful API endpoints for all system functions
+- **Server Scripts** - Easy server startup scripts for different platforms
 
-#### 📋 Health Assessment Reports Tab
-- **Monthly Reports**: Comprehensive health assessments
-- **Weekly Summaries**: Detailed checkup summaries
-- **Statistics**: Health metrics and trends
-- **Report Access**: View and download detailed reports
+### Quick Start with PHP
 
-#### ⚠️ Incident Logs Tab
-- **Incident Tracking**: Log injuries, sickness, and emergencies
-- **Severity Levels**: Low, Medium, High severity classification
-- **Status Management**: Track resolution status
-- **Detailed Records**: Complete incident documentation
+#### Prerequisites
+- PHP 7.4 or higher
+- MySQL/MariaDB server
+- Composer (for dependency management)
 
-#### 📅 Daily Schedule Tab
-- **Timeline View**: Visual timeline of daily checkups
-- **Status Tracking**: Completed, In Progress, Upcoming status
-- **Schedule Management**: Real-time schedule updates
+#### Installation
 
-#### 🔔 Environmental Alerts Tab
-- **Real-time Alerts**: Environmental condition monitoring
-- **Alert Types**: Temperature, humidity, and other environmental alerts
-- **Action Management**: Acknowledge and respond to alerts
-- **Priority Levels**: Urgent and warning classifications
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd TORTOISE_CONSERVATION_SYSTEM
+   ```
 
-## 🎨 Design Features
+2. **Install PHP dependencies**
+   ```bash
+   composer install
+   ```
 
-### Visual Design
-- **Color Scheme**: Professional green and earthy tones
-- **Typography**: Modern Poppins font family
-- **Icons**: Font Awesome icons throughout the interface
-- **Animations**: Smooth transitions and hover effects
-- **Responsive Design**: Mobile-first approach with full desktop support
+3. **Configure database**
+   - Update database settings in `config.php`
+   - Import the database schema from `database.sql`
 
-### User Experience
-- **Intuitive Navigation**: Tab-based interface with clear section organization
-- **Interactive Elements**: Hover effects, ripple animations, and smooth transitions
-- **Loading States**: Professional loading animations and progress indicators
-- **Error Handling**: User-friendly error messages and validation feedback
-- **Accessibility**: Screen reader support and keyboard navigation
+4. **Start the PHP server**
 
-## 🚀 Technical Implementation
+   **Windows:**
+   ```bash
+   start-server.bat
+   ```
 
-### Frontend Technologies
-- **HTML5**: Semantic markup with accessibility features
-- **CSS3**: Modern styling with Grid, Flexbox, and animations
-- **JavaScript**: Interactive functionality and dynamic content
-- **Font Awesome**: Professional icon library
-- **Google Fonts**: Poppins font family
+   **Linux/Mac:**
+   ```bash
+   chmod +x start-server.sh
+   ./start-server.sh
+   ```
 
-### Key Features
-- **Local Storage**: Remember me functionality and session management
-- **Form Validation**: Client-side validation with real-time feedback
-- **Responsive Design**: Mobile, tablet, and desktop compatibility
-- **Performance Optimization**: Lazy loading, throttled events, and efficient animations
-- **Cross-browser Compatibility**: Works on all modern browsers
+   **Manual start:**
+   ```bash
+   php -S localhost:8000 -t . -c php.ini
+   ```
 
-## 📱 Responsive Design
+5. **Access the system**
+   - Main application: http://localhost:8000
+   - API endpoints: http://localhost:8000/api/
+   - Health check: http://localhost:8000/api/health
 
-The system is fully responsive and optimized for:
-- **Mobile Devices**: 320px and above
-- **Tablets**: 768px and above
-- **Desktop**: 1024px and above
-- **Large Screens**: 1400px and above
+### API Endpoints
 
-## 🔐 Security Features
+The system provides RESTful API endpoints for all major functions:
 
-- **Credential Validation**: Secure login with predefined credentials
-- **Session Management**: Automatic logout after 24 hours
-- **Input Sanitization**: Form validation and sanitization
-- **Access Control**: Role-based access for veterinarians
-- **Role-based Routing**: Only veterinarians can access the veterinarian dashboard
+- `GET /api/health` - System health and status
+- `GET /api/tortoises` - Tortoise information
+- `GET /api/users` - User management
+- `GET /api/tasks` - Task management
+- `GET /api/breeding` - Breeding program data
+- `GET /api/nutrition` - Nutrition and feeding data
+- `GET /api/veterinary` - Medical and health data
+- `GET /api/maintenance` - Facility maintenance data
+- `GET /api/iot` - IoT sensor data
 
-## 🔄 Login Flow
+### Configuration
 
-1. **Landing Page**: Users click "Login" button in the navigation
-2. **Login Page**: Users enter credentials (no default values shown)
-3. **Credential Validation**: System validates against veterinarian credentials
-4. **Success**: Veterinarians are redirected to the dashboard
-5. **Error**: Invalid credentials show error message
-6. **Access Control**: Only veterinarians can access the veterinarian dashboard
+Key configuration files:
 
-## 🧭 Navigation Features
+- `config.php` - Application settings and constants
+- `php.ini` - PHP server configuration
+- `.htaccess` - Apache server configuration
+- `composer.json` - PHP dependency management
 
-### **From Login Page to Landing Page**
-- **Back to Home Button**: Located at the top left of the login page
-- **Back to Landing Page Button**: Located in the form header
-- **Keyboard Shortcuts**:
-  - `Escape` key
-  - `Home` key
-  - `Ctrl + Backspace`
+### Database Connection
 
-### **After Logout**
-- **Welcome Message**: Shows logout confirmation with navigation options
-- **Auto-redirect**: Returns to login page with success parameter
-- **Easy Navigation**: Multiple ways to return to landing page
+The system uses an improved database connection class with:
 
-### **Dashboard Navigation**
-- **Sidebar Tabs**: Navigate between different dashboard sections
-- **Logout Button**: Located in the header with confirmation modal
+- Connection pooling and management
+- Prepared statements for security
+- Transaction support
+- Error handling and logging
+- Automatic reconnection
 
-## 🎯 Usage Instructions
-
-### For Veterinarians
-
-1. **Access the System**:
-   - Navigate to the landing page
-   - Click "Login" in the navigation
-   - Or directly access: `login.html`
-
-2. **Login Process**:
-   - Enter User ID: `VETERINARIAN111`
-   - Enter Password: `1234`
-   - Select User Type: `veterinarian`
-   - Optionally check "Remember me"
-   - Click "Login"
-
-3. **Dashboard Navigation**:
-   - Use the sidebar navigation to switch between tabs
-   - Each tab provides specific functionality for tortoise care
-   - Use action buttons for quick access to common tasks
-
-4. **Logout**:
-   - Click the logout button in the header
-   - Confirm logout in the modal dialog
-   - System will redirect to login page
-
-### For Administrators
-
-1. **System Management**:
-   - Monitor veterinarian activities through the dashboard
-   - Access comprehensive reports and statistics
-   - Manage environmental alerts and incident logs
-
-## 🔧 File Structure
+### File Structure
 
 ```
-tortoise-conservation-landing/
-├── index.html                 # Main landing page
-├── styles.css                 # Landing page styles
-├── script.js                  # Landing page functionality
-├── login.html                 # Main login page
-├── login-styles.css           # Login page styles
-├── login-script.js            # Login page functionality
-├── vet-login.html            # Veterinarian-specific login page (legacy)
-├── vet-login-styles.css      # Veterinarian login styles (legacy)
-├── vet-login-script.js       # Veterinarian login functionality (legacy)
-├── vet-dashboard.html        # Veterinarian dashboard
-├── vet-dashboard-styles.css  # Dashboard styles
-├── vet-dashboard-script.js   # Dashboard functionality
-├── test-login-flow.html      # Login flow test page
-└── README.md                 # This documentation
+TORTOISE_CONSERVATION_SYSTEM/
+├── api/                          # API endpoints
+│   ├── index.php                # API router
+│   └── endpoints/               # Individual endpoint handlers
+│       ├── health.php           # Health check
+│       ├── tortoises.php        # Tortoise management
+│       ├── users.php            # User management
+│       └── ...                  # Other endpoints
+├── config.php                   # Application configuration
+├── database.php                 # Database connection class
+├── db_connection.php            # Legacy database connection
+├── php.ini                      # PHP configuration
+├── .htaccess                    # Apache configuration
+├── composer.json                # PHP dependencies
+├── start-server.bat             # Windows server startup
+├── start-server.sh              # Unix server startup
+├── logs/                        # Application logs
+├── uploads/                     # File uploads
+└── ...                          # HTML/CSS/JS files
+```
 
-## 🌐 Browser Support
+## Development
 
-- **Chrome**: 90+
-- **Firefox**: 88+
-- **Safari**: 14+
-- **Edge**: 90+
+### Adding New API Endpoints
 
-## 📈 Performance
+1. Create a new file in `api/endpoints/`
+2. Handle the appropriate HTTP methods
+3. Use the `apiResponse()` and `apiError()` helper functions
+4. Add the endpoint to the router in `api/index.php`
 
-- **Fast Loading**: Optimized assets and efficient code
-- **Smooth Animations**: 60fps animations with hardware acceleration
-- **Responsive Interactions**: Immediate feedback on user actions
-- **Efficient Memory Usage**: Optimized event handling and cleanup
+### Database Operations
 
-## 🔮 Future Enhancements
+Use the Database class for all database operations:
 
-- **Backend Integration**: Real database and API integration
-- **Multi-user Support**: Support for multiple veterinarians
-- **Advanced Analytics**: Detailed reporting and analytics
-- **Mobile App**: Native mobile application
-- **Real-time Updates**: WebSocket integration for live updates
-- **Image Upload**: Photo documentation for tortoises
-- **Export Features**: PDF and Excel export capabilities
-- **Additional User Roles**: Full implementation for Administrator, Caretaker, Researcher, and Volunteer roles
-- **Role-specific Dashboards**: Customized dashboards for each user type
+```php
+$db = Database::getInstance();
 
-## 📝 Notes
+// Fetch data
+$tortoises = $db->fetchAll("SELECT * FROM tortoises");
 
-- **Legacy Files**: The `vet-login.html` files are kept for reference but are no longer the primary login method
-- **Current Implementation**: Only veterinarian role is fully implemented with dashboard access
-- **Other Roles**: Administrator, Caretaker, Researcher, and Volunteer roles are available in the dropdown but do not have dashboards implemented yet
+// Insert data
+$id = $db->insert("INSERT INTO tortoises (name, species) VALUES (?, ?)", ['Tommy', 'Galapagos']);
 
-## 🤝 Contributing
+// Update data
+$affected = $db->update("UPDATE tortoises SET status = ? WHERE id = ?", ['healthy', $id]);
+```
 
-This system is designed as a demonstration of modern web development practices for conservation management. For production use, additional security measures and backend integration would be required.
+### Error Handling
 
-## 📄 License
+The system includes comprehensive error handling:
 
-This project is created for educational and demonstration purposes. Please ensure proper licensing for production use.
+- Database connection errors
+- Query execution errors
+- API validation errors
+- File upload errors
+- Logging to `logs/php_errors.log`
+
+## Security Features
+
+- SQL injection prevention with prepared statements
+- XSS protection headers
+- CSRF protection
+- File upload validation
+- Secure session management
+- Input sanitization and validation
+
+## Performance Optimization
+
+- OPcache enabled for PHP performance
+- Database connection pooling
+- File compression and caching
+- Optimized database queries
+- Memory management
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Database Connection Failed**
+   - Check database credentials in `config.php`
+   - Ensure MySQL service is running
+   - Verify database exists
+
+2. **Permission Denied**
+   - Ensure `logs/` and `uploads/` directories are writable
+   - Check file permissions on server startup scripts
+
+3. **PHP Extensions Missing**
+   - Install required PHP extensions: mysqli, json, curl
+   - Use `composer install` to check dependencies
+
+4. **Port Already in Use**
+   - Change port in server startup scripts
+   - Check for other services using port 8000
+
+### Logs
+
+Check the following log files for debugging:
+
+- `logs/php_errors.log` - PHP errors and warnings
+- Apache error logs (if using Apache)
+- Browser developer console for frontend issues
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Support
+
+For support and questions:
+- Create an issue in the repository
+- Check the troubleshooting section
+- Review the API documentation
 
 ---
 
-**🐢 Protecting Tomorrow, One Tortoise at a Time 🐢** 
+**Note**: This system is designed for educational and conservation purposes. Ensure compliance with local wildlife regulations and best practices when implementing in production environments. 
